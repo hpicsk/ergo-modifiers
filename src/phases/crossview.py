@@ -48,8 +48,11 @@ Parameters (degrees-of-freedom accounting):
                       still count as filming one work episode. Reported over
                       TAKE_PAIR_DT_GRID, so the tolerance is a disclosed
                       sensitivity rather than a tuned threshold.
-  LAG_FRAMES          CHOSEN (structural). Lags for the within-view temporal
-                      control, spanning one frame to beyond the median clip length.
+  LAG_FRAMES          CHOSEN (structural). Every lag from one frame to 1,000
+                      frames, beyond the length of most paired clips, for the
+                      within-view temporal control. Agreement between two lags of a
+                      sparser grid can fall below the grid's minimum, so the floor
+                      is taken over every lag of the range.
   N_BOOT, BOOT_SEED   CHOSEN (structural). Bootstrap resolution and reproducibility.
 Nothing here is FITTED. Every reported quantity is MEASURED from the delivered
 annotations; no model is trained.
@@ -75,8 +78,9 @@ SENSITIVITY_GRID = (20, 50, 100, 200)  # CHOSEN: the values MIN_PAIRED_FRAMES is
 # Tier 3: two takes count as one work episode if their start stamps are this close.
 TAKE_PAIR_DT_S = 60
 TAKE_PAIR_DT_GRID = (0, 30, 60, 120, 300)
-# Within-view temporal control: one frame to beyond the median clip length.
-LAG_FRAMES = (1, 10, 100, 1000)
+# Within-view temporal control: every lag from one frame to beyond the length of most
+# paired clips.
+LAG_FRAMES = tuple(range(1, 1001))
 N_BOOT = 2000
 BOOT_SEED = 0
 
@@ -408,14 +412,15 @@ def run():
           f"{res['structure']['n_workers']} workers, {res['structure']['n_factories']} factory")
     print(f"temporal control (trunk_twist): cross-view agreement "
           f"{h['trunk_twist_xview_agreement']:.3f} vs within-view floor "
-          f"{h['trunk_twist_within_view_floor']:.3f} (min over lags {list(LAG_FRAMES)}, "
+          f"{h['trunk_twist_within_view_floor']:.3f} (min over lags {LAG_FRAMES[0]}-{LAG_FRAMES[-1]}, "
           f"at lag {h['trunk_twist_within_view_floor_lag']} on "
           f"{h['trunk_twist_within_view_floor_views']}/"
           f"{h['trunk_twist_within_view_floor_views_total']} session-views, "
           f"{h['trunk_twist_within_view_floor_pairs']:,} frame-pairs)")
-    print("  per lag: " + "  ".join(
+    shown = sorted({1, 10, 100, LAG_FRAMES[-1], h["trunk_twist_within_view_floor_lag"]})
+    print("  at lags: " + "  ".join(
         f"{lag}:{control['trunk_twist'][lag]:.3f}[{control_base[lag]['n_views']}v/"
-        f"{control_base[lag]['n_pairs']}p]" for lag in map(str, LAG_FRAMES)))
+        f"{control_base[lag]['n_pairs']}p]" for lag in map(str, shown)))
     print(f"sensitivity to MIN_PAIRED_FRAMES: "
           + ", ".join(f"{t}:{v['kappa_trunk_twist']:+.3f}/{v['kappa_legs_supported']:.3f}"
                       for t, v in sens.items()))

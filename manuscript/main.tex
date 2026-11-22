@@ -5,6 +5,13 @@
 \input{params}   % all numeric values via \newcommand macros
 
 \journal{International Journal of Industrial Ergonomics}
+% The class's title-page footer sets a space after its full-width box, which
+% overfills the line by that space; this footer prints the same line without it.
+\makeatletter
+\def\ps@pprintTitle{\let\@oddhead\@empty\let\@evenhead\@empty
+  \def\@oddfoot{\footnotesize\itshape Preprint submitted to \@journal\hfill\@date}%
+  \let\@evenfoot\@oddfoot}
+\makeatother
 
 \begin{document}
 \begin{frontmatter}
@@ -24,23 +31,24 @@ RULA/REBA posture-modifier labels on factory-floor video}
 
 \begin{abstract}
 \linespread{1}\selectfont
-The Rapid Upper Limb Assessment (RULA) and the Rapid Entire Body Assessment (REBA) adjust a
-segment's posture score for modifiers, such as a twisted trunk. Automated
-pipelines predict these modifiers from a 2-D skeleton, the joint positions in a frame. Validating such a pipeline against labels that a labeler set for the view that it sees
-shows how well it recovers the posture only if those labels describe the
-posture, not the view. We test that condition on factory video
-labeled per camera, in which some clips of two cameras share a start time. A
-machine-learning predictor, given one view's labeled joints and never trained on the
-worker whose frames it predicts, is evaluated by the area under the receiver operating
-characteristic curve (AUC, 0.5 at chance). On frames that both cameras recorded, its AUC against that view's labels, pooled over both views, is at least
-\pairOrientMinAuc\ on the \nOrientModifiers\
-modifiers for twist, lateral bend, abduction or an arm across or out from the body. There,
-the views' labels of those modifiers agree at Cohen's $\kappa$ (1 if perfect, 0 at chance)
-of at most \maxOrientXviewKappa, and on trunk twist below chance. Against the other view's
-labels, the trunk-twist AUC falls below 0.5. On a second dataset, labeled from motion
-capture, the predictions from two cameras agree less for postures outside the sagittal
-plane than within it. A high AUC against same-view labels therefore does not show posture
-recovery, so such a pipeline's scores can change with camera placement.
+The Rapid Upper Limb Assessment (RULA) and the Rapid Entire Body Assessment (REBA),
+observational methods of musculoskeletal risk, adjust a segment's posture score for
+modifiers, such as trunk twist. Automated pipelines predict these modifiers from a 2-D
+skeleton, a frame's joint positions. Validating such a pipeline against same-view labels,
+which a labeler set for the view that the pipeline analyzes, shows how well the pipeline
+recovers the posture only if each label describes the posture, not the view. We test that condition
+with a machine-learning predictor on factory video labeled per camera, where some clips
+of two cameras share a start time. The predictor, given one view's 2-D skeleton and
+never trained on the worker whose frames it predicts, is evaluated by the area under the
+receiver operating characteristic curve (AUC, 0.5 at chance). On frames that both cameras
+recorded, its same-view AUC over both views is at least \pairOrientMinAuc\ on
+\nOrientModifiers\ modifiers for twist, lateral bend, abduction or an arm across or out
+from the body. Yet the views' labels of those modifiers agree at Cohen's $\kappa$ (1 if
+perfect, 0 at chance) of at most \maxOrientXviewKappa, below chance on trunk twist.
+Against the other view's labels, the trunk-twist AUC falls below 0.5. On a second dataset,
+labeled from motion capture, two cameras' predictions agree less for twist, lateral bend and
+abduction than for flexion and arm elevation. A pipeline validated against same-view labels therefore
+need not recover the posture and can give scores that change with camera placement.
 \end{abstract}
 
 \begin{keyword}
@@ -69,21 +77,25 @@ correctly than the other postures that it reviewed \citep{takala2010observationa
 
 Markerless pose estimators such as OpenPose \citep{cao2021openpose} locate a skeleton, a
 set of joint positions called keypoints, in each frame of ordinary video, so automated
-scoring could cover a whole shift. Applied studies derive the inputs of RULA or REBA, the
-posture bands and the modifiers, from those keypoints. They set each input that depends on
-an angle by a hand-coded rule on keypoint angles and set the remaining inputs by hand
-\citep{kim2021openpose,lin2022realtime,nayak2021rula,agostinelli2024validation}. RULA and
-REBA publish no angle at which a segment counts as twisted, bent to the side or abducted,
+scoring could cover a whole shift. Applied studies
+\citep{kim2021openpose,lin2022realtime,nayak2021rula,plantard2017kinect,agostinelli2024validation,kwon2022singleview}
+derive the inputs of RULA or REBA, the posture bands and the modifiers, from such a
+skeleton, which \citet{plantard2017kinect} took from a depth camera rather than from
+ordinary video. They set each input that depends on an angle by a hand-coded rule on keypoint
+angles and set the remaining inputs by hand. Such a rule
+needs an angle threshold, but RULA and REBA publish no angle at which a segment counts as
+twisted, bent to the side or abducted,
 so each implementation chooses its own threshold \citep{vignais2017bsn}. The applied studies
-validate joint angles or scores rather than individual modifiers. \citet{nayak2021rula} and \citet{plantard2017kinect}
+validate joint angles or scores rather than the individual modifiers that such a threshold
+sets. \citet{nayak2021rula} and \citet{plantard2017kinect}
 compared RULA's grand score and its two group scores, which each combine several
 segments, with experts' scores. \citet{kim2021openpose} compared joint angles with an
 inertial motion-capture system and \citet{lin2022realtime} with an optical one, and \citet{agostinelli2024validation} compared the computed
 assessment with the assessment from angles that ergonomists measured on the footage that
 the pipeline analyzed. \citet{kwon2022singleview} compared the RULA score of each body segment
-with the consensus of \kwonNExperts\ experts. Of the scores that these studies compared,
+and of the legs with the consensus of experts. Of the scores that the applied studies compared,
 only RULA's leg score, which RULA sets from leg support alone, depends on a single
-modifier, and every other score combines several inputs. A dataset that labels each
+modifier, whereas every other score combines several inputs. A dataset that labels each
 modifier for each camera view allows a more direct test, which evaluates a predictor of the
 modifier against the labels of the view that the predictor sees. The test measures the
 area under the receiver operating characteristic curve (AUC), the probability that the
@@ -130,34 +142,35 @@ once. On the frames that both cameras recorded, we measure the same-view AUC and
 agreement between the two views' labels. A gradient-boosted tree predictor, an ensemble of
 decision trees in which each tree corrects the errors of the trees before it, is given the
 annotated keypoints of one view and is never trained on the worker whose frames it
-predicts. The predictor is scored against that view's labels. A learned predictor needs no angle threshold, which RULA and REBA do not publish, and a tree ensemble over the keypoints can
-approximate the hand-coded rules of the applied studies, so its AUC shows how well the
-keypoints predict a view's label. Cohen's $\kappa$, the unweighted $\kappa$ between two sets of labels of the same items, compares the labels that the two views carry for the same moment. To
+predicts. The predictor is scored against that view's labels. We use a learned predictor because it needs no angle threshold, which RULA and REBA do
+not publish, and because a tree ensemble over the keypoints can approximate the hand-coded
+rules of the applied studies. Cohen's $\kappa$, the unweighted $\kappa$ between two sets of labels of the same items, compares the labels that the two views carry for the same moment. To
 separate what a camera's view does to the predictions from what labelers do, we use a
-second dataset, AnDy \citep{maurice2019andy}, whose labels we threshold from joint angles
-recorded by motion capture, so no labeler sets them. For the same moment, we compare the
+second dataset, AnDy \citep{maurice2019andy}, whose labels of trunk, neck and arm postures
+we threshold from joint angles recorded by motion capture, so no labeler sets them. For the same moment, we compare the
 predictions that a gradient-boosted tree predictor makes from the skeleton that a pose
 estimator finds in each of two cameras' videos.
 
-Given the annotated keypoints of one view of the \datasetName, the predictor reaches a
-same-view AUC of at least \orientMinAuc\ over the whole dataset on each of the
-\nOrientModifiers\ orientation modifiers that vary enough across frames to be scored, the
-modifiers for twist, lateral bend, abduction
-or an arm across or out from the body: trunk twist, trunk lateral bend, neck lateral bend,
-shoulder abduction, an upper arm across the body, a lower arm out to the side, a wrist
-bent to the side, and wrist twist at two levels. On the frames that both cameras recorded, it reaches at least
+The orientation modifiers are the \nOrientModifiers\ modifiers for twist, lateral bend,
+abduction or an arm across or out from the body that the dataset marks on neither almost
+every frame nor almost none: trunk twist, trunk lateral bend, neck lateral bend, shoulder abduction, an upper arm
+across the body, a lower arm out to the side, a wrist bent to the side, and wrist twist at
+two levels (any twist, and twist to the end of its range). Given the annotated keypoints of
+one view of the \datasetName, the predictor reaches a same-view AUC of at least
+\orientMinAuc\ over the whole dataset on each orientation modifier. On the frames that both cameras recorded, the predictor reaches at least
 \pairOrientMinAuc\ with the two views pooled. On those frames, the two views' labels agree at
 $\kappa\le\maxOrientXviewKappa$ on every orientation modifier and at
 $\kappa=\kappaXviewTrunkTwist$, below the 0 of chance, on trunk twist, whereas they agree
-at $\kappa=\kappaXviewLegsSupport$ on leg support. Scored against the other view's labels,
-the predictor's AUC on trunk twist falls from \pairAucTrunkTwist\ to \otherAucTrunkTwist.
-On AnDy, the two cameras' 0/1 predictions agree at $\kappa$ from \andyXviewKappaTrunkLateral\
+at $\kappa=\kappaXviewLegsSupport$ on leg support. Scored against the other view's labels on
+those frames, the predictor's pooled AUC on trunk twist falls from \pairAucTrunkTwist\ to \otherAucTrunkTwist.
+On AnDy, the two cameras' thresholded 0/1 predictions agree at $\kappa$ from \andyXviewKappaTrunkLateral\
 to \andyXviewKappaArmAbd\ for trunk twist, trunk lateral bend and shoulder abduction,
 which move the body out of the sagittal plane, compared with \andyXviewKappaArmElev\ to
-\andyXviewKappaTrunkFlexion\ for trunk flexion, neck flexion and arm elevation, which lie
-in it. Two views of one moment show one posture, so their labels test whether a label depends on the view or on how each view was
-labeled, and the AnDy labels come from motion capture, so the AnDy
-cameras show what a camera's view alone does to the predictions.
+\andyXviewKappaTrunkFlexion\ for trunk flexion, neck flexion and arm elevation, which RULA
+and REBA band as angles within it. Two views of one moment show one posture, so a
+disagreement between their labels shows that a label depends on the view or on how each
+view was labeled. The AnDy labels come from motion capture rather than from a labeler, so
+the AnDy cameras show what a camera's view alone does to the predictions.
 
 \section{Materials and methods}
 \label{sec:methods}
@@ -170,11 +183,12 @@ Musculoskeletal Burden Factors in Manufacturing Workers \citep{aihubmsk}, suppli
 frames of \nSubjects\ workers recorded at \nFactories\ South-Korean manufacturing plants.
 The dataset stores each camera's recording of one worker at one work process as a clip,
 and each clip is filmed from one of \nAngles\ camera angles, which the dataset numbers
-from 1 to \nAngles. These counts, like every count and estimate that this paper reports for this dataset, are
-computed from the files that AI\,Hub delivers, and the data guide that comes with the dataset
+from 1 to \nAngles. Every count and estimate that this paper reports for this dataset is
+computed from the files that AI\,Hub delivers, whereas the data guide that comes with the dataset
 \citep{aihubmsk} gives other counts. For each worker in each frame, the dataset annotates
 a bounding box and \nKeypoints\ 2-D keypoints, each as an $[x,y,\text{visibility}]$
-triple. It also labels \nPostureBins\ posture bins, coarse classes of segment posture, and
+triple. It also labels \nPostureBins\ posture bins, coarse classes that the dataset sets for the
+trunk, the neck, the upper arm, the lower arm and the legs, and
 \nModifiersDelivered\ binary posture modifiers. \ref{app:rula} maps each bin to the RULA input that it feeds, if any.
 The dataset labels each frame of each camera separately, so each label was set for one
 view. The data guide states that trained crowd workers, the labelers, labeled the frames on
@@ -184,13 +198,14 @@ software suggested automatically. Inspectors then corrected the labels.
 Two of the delivered modifiers are dropped. Shoulder elevation is marked in one frame and
 neck twist in $\prevNeckTwist\%$ of the frames, so neither has enough frames of both
 classes for an AUC. The remaining \nModifiersUsable\ modifiers comprise \nOrientModifiers\
-orientation modifiers and three support modifiers. The orientation modifiers record trunk
+orientation modifiers and three support modifiers, which record whether the legs, the upper
+arm or the trunk rests on a support. The orientation modifiers record trunk
 twist, trunk lateral bend, neck lateral bend, shoulder abduction, an upper arm across the
 body (shoulder across-body), a lower arm out to the side (lower-arm out-of-body), a wrist bent to the side (wrist deviation), and wrist twist at two levels. RULA's single wrist-twist input
-has two levels, a twisted wrist and a wrist twisted to the end of its range, and every
-frame marked at the end-range level is also marked at the other, so we read the two
-wrist-twist modifiers as those two levels and score both. The support modifiers record
-whether the legs, the upper arm or the trunk rests on a support. Upper-arm and trunk
+has two levels, a twisted wrist and a wrist twisted to the end of its range. The dataset's
+modifier for a wrist twisted to the end marks only frames that the dataset's modifier for a
+twisted wrist also marks, so we read the two wrist-twist modifiers as those two levels and
+score both. Upper-arm and trunk
 support are contact with a surface, which joint positions do not show, whereas leg support
 also goes with sitting or squatting, which a skeleton does show, so only leg support can
 follow from the joint positions. \ref{app:rula} maps each
@@ -229,12 +244,15 @@ keypoints would show that the bins alone carry the label.
 
 The dataset records each clip's start time, its start stamp, to the second. Two cameras' clips with the
 same start stamp presumably show the same work at once, so we pair their frames by frame
-index, assuming that both cameras extracted frames at the same rate. Two stamps are equal, however, only where both read a whole minute, with zero seconds. Such stamps may have been rounded
-to the minute, and \nTakesRoundedStamp\ of the \nTakes\ clips with at least
-\xviewMinPairedFrames\ frames carry one, almost all of them at one plant. A clip pair
+index, assuming that frames were extracted from both cameras' videos at the same rate. Two stamps are equal, however, only where both read a whole minute, with zero seconds.
+Such a stamp may have been rounded to the minute, so two clips that share a stamp may have
+started up to a minute apart. Only \nTakesRoundedStamp\ of the \nTakes\ clips with at
+least \xviewMinPairedFrames\ frames carry such a stamp, almost all of the
+\nTakesRoundedStamp\ at one plant, so the clips whose frames we pair come from that plant. A clip pair
 enters the comparison when its two clips share a stamp and hold at least
-\xviewMinPairedFrames\ paired frames, a minimum that we chose so that each clip pair holds
-enough frames for a $\kappa$ of its own and that we vary in Section~\ref{sec:crossview}.
+\xviewMinPairedFrames\ frame pairs, a minimum that we chose so that each clip pair holds
+enough frames for a $\kappa$ of its own. Section~\ref{sec:crossview} repeats the
+comparison at other minimums.
 In all, \nXviewSessions\ clip pairs enter the comparison,
 with \nXviewFrames\ frame pairs of \nXviewWorkers\ workers at \nXviewFactories\ plant.
 
@@ -242,19 +260,19 @@ Cohen's $\kappa$ between the two views' labels measures their agreement beyond c
 name its values by the scale of \citet{landis1977kappa}, on which $\kappa$ below 0 is poor,
 from 0 to 0.20 slight, from 0.21 to 0.40 fair, from 0.41 to 0.60 moderate, from 0.61 to
 0.80 substantial, and above 0.80 almost perfect agreement. The prevalence of a label is the
-share of frames that carry it. Random labeling errors that are as likely in either
-direction lower $\kappa$ but leave the prevalence unchanged, whereas the prevalence differs
-between the views when one view's labels mark the modifier more often. The gap between the
+share of frames that carry it. Random labeling errors lower $\kappa$. Errors that add and
+remove equally many marks of a modifier leave the prevalence unchanged, whereas the
+prevalence differs between the views when one view's labels mark the modifier more often. The gap between the
 two views' prevalences therefore shows whether a disagreement is systematic, with one view
 marking the modifier more often than the other. On the paired frames, the predictions of Section~\ref{met:predictor} also give each view's
 same-view AUC. Scored against the other view's label for the same moment, the same predictions give
 the other-view AUC. If both views' labels describe the posture, the predictions score
 about as well against the other view's labels as against their own, so an other-view AUC
 below the same-view AUC shows that the predictions follow something that one view's labels
-carry and the other view's labels do not. Two further checks address the paired frames' own composition. A third
+carry and the other view's labels do not. Two further checks address the paired frames' own composition. Frames of one plant share
+that plant's setting, which a predictor can learn from the plant's other workers, so a third
 predictor, trained on every frame outside the plant of the paired frames, tests whether
-the same-view AUC there depends on whether the training frames include workers from that
-plant. The same-view AUC
+the same-view AUC on the paired frames depends on training frames from that plant. The same-view AUC
 computed within each clip pair, averaged over the clip pairs with weights proportional to
 their frames, tests whether the AUC over all paired frames together depends on differences between clip
 pairs.
@@ -265,12 +283,15 @@ If the two cameras did not start at the same
 moment, pairing by frame index would pair different moments, and the labels would disagree
 for that reason alone. The data guide
 states only that at least one frame per second was extracted from each video, so a start
-offset cannot be bounded in seconds and is bounded in frames instead. The share of one
+offset of a given number of seconds spans an unknown number of frames. We therefore bound
+the offset in frames. The share of one
 view's labels that agree with the same view's label a given number of frames later shows
 how often two labels disagree when a time gap is their only difference. We compute that
-share at lags from 1 to \xviewLagMax\ frames, each a power of ten. The longest lag exceeds the length of most clips and so exceeds any
-start offset between two overlapping clips of that length. If the two views agree less than one view agrees with itself at every
-one of those lags, a start offset alone cannot produce their disagreement.
+share at every lag from 1 to \xviewLagMax\ frames. The start offset between two clips that overlap in
+time is shorter than the earlier clip, so the longest lag, which exceeds the length of
+most clips, exceeds most start offsets between overlapping clips.
+If the two views agree less than one view agrees with itself at every one of those lags, a
+start offset of up to \xviewLagMax\ frames cannot alone produce their disagreement.
 
 The frame pairs come from one plant, so a second comparison, which pairs no frames,
 extends the test to every plant. It uses near-simultaneous
@@ -289,13 +310,17 @@ replicates that resample the workers.
 
 AnDy \citep{maurice2019andy} records \andyParticipants\ participants performing
 industry-like tasks in trials. Two RGB cameras, camera 1 and camera 2, film the trials while an Xsens suit of
-inertial sensors records the motion of the trunk and limbs in three dimensions.
+inertial sensors records the motion of the head, trunk and limbs in three dimensions.
 Thresholding the joint angles that the suit records gives \andyNLabels\ binary labels that
 no camera position changes. Trunk flexion, neck flexion and arm elevation are in-plane
-labels, angles within the sagittal plane, and each is positive where its angle exceeds
+labels, which RULA and REBA band as angles within the sagittal plane, and each is positive
+where its angle exceeds
 \andyCutTrunkFlexion\textdegree, \andyCutNeckFlexion\textdegree\ and
 \andyCutArmElev\textdegree, respectively, edges of the bands that RULA and REBA publish
-\citep{mcatamney1993rula,hignett2000reba}. Trunk twist, trunk lateral bend and shoulder
+\citep{mcatamney1993rula,hignett2000reba}. We measure trunk and neck flexion within that
+plane. Arm elevation, which we measure as the upper arm's angle from the downward vertical,
+also grows when the arm is raised to the side, so arm elevation belongs to the in-plane
+labels by its bands in RULA and REBA, not by the angle that we measure. Trunk twist, trunk lateral bend and shoulder
 abduction are out-of-plane labels, a rotation about the spine or a movement to the side,
 for which neither method publishes an angle, so we chose thresholds of
 \andyCutTrunkTwist\textdegree\ for trunk twist, \andyCutTrunkLateral\textdegree\ for trunk
@@ -339,12 +364,12 @@ and upper-arm support stays near the 0.5 of chance, at \aucUpperarmSupport. Trun
 is at \aucTrunkSupport, below chance, with an interval from \aucCiLoTrunkSupport\ to
 \aucCiHiTrunkSupport\ that is wide because most of its positive frames belong to one
 worker. Scored within each of the \nAngles\ camera angles, every orientation modifier keeps
-an AUC of at least \minOrientAucOverAngles. Two checks in \ref{app:checks} change the
-predictor's input or its training plants. When the predictor is given the keypoints that Keypoint R-CNN
+an AUC of at least \minOrientAucOverAngles. Two checks in \ref{app:checks} test whether the
+AUCs hold with joints that a pose estimator finds and for a plant whose workers were absent from training. When the predictor is given the keypoints that Keypoint R-CNN
 (Section~\ref{met:andy}) finds on the \nJointsEst\ joints that the estimator shares with
 the annotation, no orientation modifier's AUC falls by more than \poseMaxOrientDropAuc\
 relative to the annotated keypoints of the same joints. Holding each plant out of training in turn lowers no
-orientation modifier's AUC by more than \siteMaxOrientDropAuc.
+orientation modifier's AUC by more than \siteMaxOrientDropAuc\ (Table~\ref{tab:unseenplant}).
 
 On every orientation modifier except shoulder abduction, the predictor given only the
 posture bins reaches a lower AUC than the keypoints do, from \ablBinsOrientLo\ to
@@ -397,11 +422,12 @@ the clip pairs with frame weights differs from the pooled AUC by at most
 On the same frame pairs, the two views' labels agree at $\kappa\le\maxOrientXviewKappa$ on
 every orientation modifier, which is fair agreement at best, and at $\kappa=\kappaXviewTrunkTwist$, below chance, on
 trunk twist (Fig.~\ref{fig:paired}). The two views' prevalences of trunk twist also differ by \prevGapXviewTrunkTwist\
-percentage points, so their disagreement is systematic. The test for a start offset of
+percentage points, so their disagreement is systematic, although the view that marks trunk
+twist more often differs between workers. The test for a start offset of
 Section~\ref{met:crossview} compares the share of frame pairs that agree on trunk twist,
-\agreeXviewTrunkTwist\ between the two views, with one view's agreement with itself. At each of the lags of Section~\ref{met:crossview}, from 1 to \xviewLagMax\ frames, that
-agreement is at least
-\withinViewFloorTrunkTwist, so a start offset alone cannot produce the disagreement. Leg support's labels agree at $\kappa=\kappaXviewLegsSupport$,
+\agreeXviewTrunkTwist\ between the two views, with the agreement of each view with itself, pooled over the views. At every lag from 1 to \xviewLagMax\ frames, that agreement is at least
+\withinViewFloorTrunkTwist, so a start offset of up to \xviewLagMax\ frames alone cannot
+produce the disagreement. Leg support's labels, by contrast, agree at $\kappa=\kappaXviewLegsSupport$,
 and its two views' prevalences differ by only \prevGapXviewLegsSupport\ percentage points.
 Scored one clip pair at a time, however, leg support's $\kappa$ ranges from
 \xviewSessLegsMin\ to \xviewSessLegsMax\ over the \xviewSessLegsN\ clip pairs in which at
@@ -409,7 +435,7 @@ least one view marks it, so leg support's agreement holds on the pooled frames b
 every clip pair. Upper-arm and trunk support are marked on too few paired frames for a
 reliable $\kappa$, and their $\kappa$ of \kappaXviewUpperarmSupport\ and
 \kappaXviewTrunkSupport\ have intervals that cover zero. Changing the minimum of
-\xviewMinPairedFrames\ paired frames per clip pair to any value from \xviewSensGridLo\ to
+\xviewMinPairedFrames\ frame pairs per clip pair to any value from \xviewSensGridLo\ to
 \xviewSensGridHi\ keeps trunk-twist $\kappa$ between \xviewSensLo\ and \xviewSensHi.
 
 The other-view AUC is lower than the same-view AUC on every orientation modifier, so the
@@ -483,20 +509,21 @@ the paired frames to plot.}
 \label{sec:andyresults}
 
 Scored against the motion-capture labels, the single-camera predictions show how well one
-camera recovers each posture. The camera with the higher AUC reaches
+camera recovers each posture. The better camera, the one with the higher AUC on a label, reaches
 \andyAucTrunkTwist\ on trunk twist, the lowest of the \andyNLabels\ labels, and
 \andyAucTrunkLateral\ to \andyAucTrunkFlexion\ on the other five (Table~\ref{tab:external}).
 Camera 1, the other camera, reaches only \andyAucOneTrunkTwist\ on trunk twist, so how
 well one camera recovers trunk twist depends on which camera it is. Of the
 \andySweepN\ thresholds of the sweep, the highest leaves trunk twist and trunk lateral bend
 too few positive frames in the training data of some fold, so both are scored at the other
-\andySensEstTrunkTwist. At those thresholds, the better camera's trunk-twist AUC ranges from
-\andySensAucLoTrunkTwist\ to \andySensAucHiTrunkTwist. It reaches \andyAucUsable, the lower
+\andySensEstTrunkTwist. At those thresholds, the trunk-twist AUC of the camera that is better at each threshold
+ranges from
+\andySensAucLoTrunkTwist\ to \andySensAucHiTrunkTwist. That AUC reaches \andyAucUsable, the lower
 bound of acceptable discrimination \citep{hosmer2013logistic}, at only
 \andySensRecovTrunkTwist\ of them, whereas trunk lateral bend reaches it at
 \andySensRecovTrunkLateral\ and shoulder abduction at all \andySensEstArmAbd. The threshold
 therefore decides whether one camera recovers trunk twist acceptably, whereas the other
-two out-of-plane labels reach that bound at most thresholds. Each camera's
+two out-of-plane labels reach that bound at more than half of the thresholds. Each camera's
 trunk-twist predictions agree with the motion-capture labels at
 $\kappa=\andyFidKappaOneTrunkTwist$ and $\kappa=\andyFidKappaTwoTrunkTwist$, slight to fair
 agreement, whereas its trunk-flexion predictions agree at
@@ -510,7 +537,7 @@ The out-of-plane label that agrees best, shoulder abduction at \andyAdjMaxOutOfP
 stays below the in-plane label that agrees worst, arm elevation at \andyAdjMinInPlane, by
 \andyGapMin\ (95\% CI [\andyGapMinCiLo,\,\andyGapMinCiHi]; Table~\ref{tab:external}). The
 mean $\kappa$ of the out-of-plane labels stays below that of the in-plane labels at every
-usable threshold of the sweep.
+threshold of the sweep at which all \andyNLabels\ labels can be scored.
 
 \begin{table}[t]
 \centering
@@ -548,17 +575,16 @@ AUC therefore records how well a predictor matches a view's trunk-twist label ra
 how well it recovers the trunk's rotation. An AUC that stays stable across camera angles does not separate matching
 from recovery either, because a predictor scored against each view's own labels matches
 each view's labels equally well whether or not the views agree. \citet{agostinelli2024validation} scored a pipeline against an assessment that ergonomists
-made from the footage that the pipeline analyzed. Such a validation cannot separate
-matching from recovery either, because an assessment made from one view's footage is
-itself a label of that view.
+made from the footage that the pipeline analyzed. A validation against an assessment made
+from one view's footage cannot separate matching from recovery either, because the
+assessment is itself a label of that view.
 
 A reference that does not change with the view does separate them, as AnDy's motion-capture labels show by distinguishing trunk flexion, which one camera recovers almost
-perfectly, from trunk twist, which it recovers at most fairly. Whether an AnDy label is in-plane or
-out-of-plane follows from its anatomical plane, and no labeler set the AnDy labels, so the
-out-of-plane predictions agree less between the two cameras than the in-plane predictions
-do because of each camera's view of the posture, not because of how labels were set. A finding in the literature agrees with that reading, because even a multi-camera 3-D
-reconstruction recovered trunk twist, trunk lateral bend and shoulder abduction less
-accurately than flexion \citep{vancrombrugge2022jointangles}. AnDy cannot show what makes the \datasetName's
+perfectly, from trunk twist, which it recovers at most fairly. No labeler set the AnDy
+labels, so how labels were set cannot explain why the out-of-plane predictions agree less
+between the two cameras than the in-plane predictions do. A multi-camera 3-D reconstruction
+also recovered trunk twist, trunk lateral bend and shoulder abduction less accurately than
+flexion \citep{vancrombrugge2022jointangles}. AnDy cannot show what makes the \datasetName's
 labels disagree, however, because the two cameras' predictors are trained on one shared set of
 motion-capture labels, whereas the two views of the \datasetName\ carry labels set separately.
 
@@ -567,26 +593,28 @@ The results of Section~\ref{sec:crossview} extend the observer disagreement that
 two simultaneous views of one worker. The two views disagree most on trunk twist, which a
 review of observational methods found seemed harder to observe correctly than the other
 postures that it reviewed \citep{takala2010observational}. A pipeline trained to
-match such labels can learn their dependence on the view. Where the camera causes that
+match labels set from footage can therefore learn the labels' dependence on the view. Where the camera causes that
 dependence, the pipeline's output changes with camera placement, which an instrument meant
 to compare risk across workstations cannot allow. Validating such a pipeline therefore
 needs labels that a second simultaneous view reproduces, or a reference that does not
 change with the view. By that requirement, the \datasetName\ could validate only leg
 support, and only on the pooled paired frames, because only leg support's labels agree
-between its two views. Even against the labels of the view that the predictor sees, the adjustment
-that RULA sums from the predicted modifiers on every frame (\ref{app:rula}) agrees with the
-adjustment summed from the labeled modifiers only moderately, at a linear-weighted
-$\kappa$ of \adjKappaTotal, a $\kappa$ that weights each disagreement by its size.
+between the two views of a frame pair. Even against the labels of the view that the predictor sees, where the views'
+disagreement plays no part, a score composed from the predicted modifiers agrees with the
+labeled score only moderately. The points that the predicted modifiers add to or remove
+from a frame's RULA score (\ref{app:rula}) agree with those of the labeled modifiers at a
+linear-weighted $\kappa$ of \adjKappaTotal, a $\kappa$ that weights each disagreement by
+its size.
 
 \subsection{Limitations}
 \label{sec:limits}
 
-The cross-view result is limited by its sample, by its timing and by the dataset's record
+The comparison of the two views' labels is limited by its sample, by the timing of its frame pairs and by the dataset's record
 of the labeling. Every paired frame comes from one of \nXviewWorkers\ workers at one plant,
 so intervals that resample clip pairs treat clips of one worker as independent draws and
 are narrower than intervals over workers would be. The near-simultaneous clips extend the
 prevalence comparison to \nTakePairWorkers\ workers at \nTakePairFactories\ plants, but
-they cannot give $\kappa$, which needs frames paired in time. The two views' simultaneity
+they cannot give $\kappa$, which needs frames paired in time. The frame pairs' simultaneity
 is inferred from start stamps that read a whole minute, because the dataset keeps no
 synchronization record. The dataset also does not record whether one labeler handled both
 views of a clip pair or whether labelers were assigned by camera, so a difference between
@@ -594,15 +622,14 @@ labelers could appear as a difference between views. The data guide does not say
 the automatic suggestions were computed for each view or how often labelers kept them
 unchanged, so suggestions computed from one view could carry that view into the labels.
 Cross-view $\kappa$ therefore measures the combined effect of the view, the automatic
-suggestion and the labeler, not the view alone. The view that marks trunk twist more often differs between
-workers, so the direction of the trunk-twist prevalence gap does not say which view's
-labels are wrong.
+suggestion, the labeler and the inspector, not the view alone. The dataset's record also does not say which view's trunk-twist labels
+are wrong, and neither can the prevalence gap, because the gap's direction differs between
+workers.
 
 The AnDy comparison and the same-view AUCs have limits of their own. On AnDy, both
 cameras' predictors are trained on one shared set of motion-capture labels, which makes
-their predictions agree more than labels set separately for each view would, so AnDy
-supports the order of its two groups of labels, in-plane above out-of-plane, but not the
-$\kappa$ that each label reaches. The posture bins alone reach an AUC of
+their predictions agree more than labels set separately for each view would, so an AnDy
+label's $\kappa$ overstates the agreement that separately set labels would reach. The posture bins alone reach an AUC of
 \ablBinsUpperarmAbduct\ on shoulder abduction, so the abduction label may follow the
 posture bin that the labeler set in the same frame rather than the arm angle that the skeleton shows, and
 only a dataset that labels the bins and the modifiers independently could tell the two
@@ -624,7 +651,7 @@ labels that two simultaneous views carry for one moment. On the frames that both
 orientation labels, whereas the two views' labels of every
 orientation modifier agree at most fairly and those of trunk twist below chance. On a
 second dataset labeled from motion capture, single-camera predictions of out-of-plane
-labels agree less between two cameras than those of sagittal-plane angles. A high
+labels agree less between two cameras than those of flexion and arm elevation. A high
 same-view AUC therefore does not show how well the skeleton recovers the posture, so a
 pipeline validated that way can report risk scores that change with where the camera
 stands.
@@ -674,14 +701,14 @@ splits. The folds are rebuilt from the worker and plant keys.
 RULA adds or removes points for the modifiers through terms that it calls Adjust terms.
 The delivered modifiers supply each of RULA's $\rulaAdjustPlus$ and $\rulaAdjustMinus$
 Adjust terms, except the two that the dropped modifiers of Section~\ref{sec:data} carry,
-whereas no label records force or load or muscle use (Table~\ref{tab:coverage}). The base posture band of each segment cannot be computed from the delivered labels,
+whereas no label records force or load or muscle use. The base posture band of each segment cannot be computed from the delivered labels,
 because the bins' classes are not RULA's bands. The trunk bin is coarser than RULA's trunk
-band (Table~\ref{tab:coverage}). Rather than RULA's lower-arm band, the lower-arm bin holds
+band. Rather than RULA's lower-arm band, the lower-arm bin holds
 the three classes of the upper-limb code of the Ovako Working Posture Analysing System
 (OWAS, \citealp{karhu1977owas}), an observational method. That code records whether both
 arms are below shoulder level, one is at or above it, or both are. RULA's grand score, which
-needs every input, therefore cannot be computed from the dataset, and this paper reports no
-grand score.
+needs every input, therefore cannot be computed from the dataset (Table~\ref{tab:coverage}),
+so this paper reports no grand score.
 
 \begin{table}[!ht]
 \centering
@@ -726,8 +753,9 @@ RULA gives an arm working across the body or out to the side, so that term is
 $\rulaAdjustPlus$ when either modifier is predicted. The base band is held fixed, which
 cancels it from any comparison of prediction with label. The predicted adjustment agrees
 with the labeled adjustment at linear-weighted $\kappa=\adjKappaTotal$, a $\kappa$ that
-weights each disagreement by its size in points, and matches it exactly on $\adjExactTotalPct\%$ of the frames, missing it by
-\adjMaeTotal\ points on average (Table~\ref{tab:composition}). Upper-arm support
+weights each disagreement by its size in points, and misses it by \adjMaeTotal\ points on
+average (Table~\ref{tab:composition}). The predicted adjustment matches the labeled one
+exactly on $\adjExactTotalPct\%$ of the frames. Upper-arm support
 supplies the only Adjust term for contact with a surface, which agrees at
 $\kappa=\adjKappaContact$. Upper-arm support
 is mis-predicted in only $\adjContactSharePct\%$ of the frames whose adjustment is
@@ -762,7 +790,7 @@ Positive controls test whether the predictor's low AUC on upper-arm and trunk su
 from the predictor rather than from the skeleton. The controls are a raised upper arm, a
 bent trunk and bent legs, \ctrlNPairs\ postures that the posture bins record and that joint
 positions show directly. Each is predicted under the protocol of
-Section~\ref{met:predictor} with one split of the workers. They reach AUC \ctrlAucMin\ to
+Section~\ref{met:predictor} with one split of the workers. The controls reach AUC \ctrlAucMin\ to
 \ctrlAucMax. In every fold, the raised upper arm and the bent trunk reach an AUC at least
 \ctrlMarginMin\ higher than the support modifier of the same body segment, so the
 predictor learns the posture of the segments whose support it cannot predict. Bent legs,
@@ -790,12 +818,6 @@ by more than \poseMaxOrientDropAuc, and it changes the composed adjustment's $\k
 \adjKappaGtThirteen\ to \adjKappaEstThirteen. Both values are computed on the crops and
 the \nJointsEst\ shared joints, whereas the \adjKappaTotal\ of \ref{app:rula} uses all
 \nKeypoints\ keypoints on every frame.
-
-Table~\ref{tab:unseenplant} gives, for each modifier, the AUC with each of the
-\nFactories\ plants held out of training in turn beside the AUC with workers held out
-(Table~\ref{tab:map}). Table~\ref{tab:pairedchecks} gives the paired-frame checks of
-Section~\ref{sec:crossview} for each modifier except upper-arm and trunk support, which are
-too rare on the paired frames.
 
 \begin{table}[!ht]
 \centering
@@ -901,9 +923,9 @@ predictor gives every positive training frame a weight equal to the ratio of neg
 positive training frames, so that a rare modifier is not ignored in training.
 
 For each pair of the three recordings of an AnDy trial (Section~\ref{met:andy}), we
-cross-correlate the vertical positions of the body
-centroid, the head and the hands over time and take the time offset at the peak
-correlation. The offset between the cameras must equal the difference of the two cameras'
+cross-correlate over time the vertical positions of the body centroid, the head and the
+forearms, which the nose and the wrists stand for in the videos, and take the time offset
+at the peak correlation. The offset between the cameras must equal the difference of the two cameras'
 offsets from the motion capture, and the residual of that equality checks each trial. On
 \andySyncValTrials\ trials whose offsets we also checked by eye against the videos, the
 median residual is \andySyncResidMed\,s. A trial enters the comparisons with the

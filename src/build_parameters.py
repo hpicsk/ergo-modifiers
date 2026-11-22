@@ -527,8 +527,6 @@ MANUAL_REGION = r"""
 % POPULATION: cited-lee2020camera | artifact: references.bib:lee2020camera | unit: figures reported in lee2020camera | size: -
 \newcommand{\leeAngleOblique}{45}
 \newcommand{\leeNObserversCap}{Four}
-% POPULATION: cited-kwon2022singleview | artifact: references.bib:kwon2022singleview | unit: figures reported in kwon2022singleview | size: -
-\newcommand{\kwonNExperts}{three}
 
 % --- Registered population crossings ---
 % A sentence printing macros from two populations reads as one measurement. Each

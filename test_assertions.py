@@ -511,9 +511,9 @@ def test_crossview_leg_support_varies_between_clip_pairs():
 
 
 def test_crossview_trunk_twist_robust_to_the_minimum_paired_frames():
-    # sec:crossview: "Setting the minimum number of paired frames per clip pair anywhere from
-    # \xviewSensGridLo to \xviewSensGridHi keeps trunk-twist kappa within [\xviewSensLo,
-    # \xviewSensHi]". MIN_PAIRED_FRAMES is researcher-chosen, so the sensitivity is its
+    # sec:crossview: "Changing the minimum of \xviewMinPairedFrames frame pairs per clip pair
+    # to any value from \xviewSensGridLo to \xviewSensGridHi keeps trunk-twist kappa between
+    # \xviewSensLo and \xviewSensHi". MIN_PAIRED_FRAMES is researcher-chosen, so the sensitivity is its
     # justification, and the sign must hold over the grid.
     tt = [v["kappa_trunk_twist"] for v in XVIEW["sensitivity"].values()]
     assert max(tt) < 0, (
@@ -522,25 +522,45 @@ def test_crossview_trunk_twist_robust_to_the_minimum_paired_frames():
 
 
 def test_crossview_not_a_synchronization_artifact():
-    # sec:crossview: one view's trunk-twist labels "agree with themselves on at least
-    # \withinViewFloorTrunkTwist of the frame pairs, whereas the two views' labels agree on
-    # \agreeXviewTrunkTwist ..., below every within-view agreement on the grid of lags", and
-    # sec:limits: "A start offset alone cannot produce the trunk-twist disagreement". The
-    # floor is the minimum over the lag grid, not the value at the largest lag.
+    # sec:crossview: the two views agree on trunk twist at \agreeXviewTrunkTwist, and "At
+    # every lag from 1 to \xviewLagMax frames, that agreement is at least
+    # \withinViewFloorTrunkTwist, so a start offset of up to \xviewLagMax frames alone cannot
+    # produce the disagreement" (met:crossview states the test). The floor is the minimum
+    # over every lag of the grid, not the value at the largest lag.
     x, floor = XVIEWH["trunk_twist_xview_agreement"], XVIEWH["trunk_twist_within_view_floor"]
     assert x < floor, (
         f"sec:crossview claims cross-view trunk-twist agreement ({x:.3f}) is below the "
         f"within-view floor ({floor:.3f}), but it is not")
     assert floor == min(XVIEW["temporal_control"]["trunk_twist"].values()), (
         "the within-view floor is no longer the minimum over the lag grid")
-    assert max(XVIEW["config"]["lag_frames"]) == int(macro("xviewLagMax").replace(",", "")), (
-        "sec:crossview prints the lag grid's end as \\xviewLagMax, but the grid ends elsewhere")
+    assert XVIEW["config"]["lag_frames"] == list(range(1, int(macro("xviewLagMax").replace(",", "")) + 1)), (
+        "sec:crossview says the within-view agreement is computed at every lag from 1 to "
+        "\\xviewLagMax frames, but the grid is another")
+
+
+def test_the_longest_lag_exceeds_most_clips():
+    # met:crossview: "the longest lag, which exceeds the length of most clips, exceeds most
+    # start offsets between overlapping clips". A clip is one camera's recording of one
+    # worker at one process from one start stamp, the unit that sec:data counts. Read from
+    # the record-level labels.
+    from src.phases import crossview as cv
+    try:
+        frames = cv.load()
+    except FileNotFoundError as e:  # the record-level labels, as _aihub reports them
+        raise AssertionError(str(e)) from None
+    lengths = frames.groupby(["F", "P", "W", "A", "TS"]).size()
+    longest = max(XVIEW["config"]["lag_frames"])
+    shorter = int((lengths <= longest).sum())
+    assert 2 * shorter > len(lengths), (
+        f"met:crossview says the longest lag ({longest} frames) exceeds the length of most "
+        f"clips, but only {shorter} of {len(lengths)} clips are that short")
 
 
 def test_crossview_trunk_twist_gap_direction_differs_between_workers():
-    # sec:limits: "the direction of the trunk-twist prevalence gap, which differs between
-    # workers". Read from the record-level labels, clip pair by clip pair, with the pairing
-    # that sec:crossview's kappa uses.
+    # sec:crossview: "the view that marks trunk twist more often differs between workers",
+    # and sec:limits: "neither can the prevalence gap, because the gap's direction differs
+    # between workers". Read from the record-level labels, clip pair by clip pair, with the
+    # pairing that sec:crossview's kappa uses.
     from src.phases import crossview as cv
     try:
         frames = cv.load()
@@ -678,12 +698,13 @@ def test_andy_sweep_counts_as_printed():
     abd = [r for r in ANDYSP["arm_abd"] if r["estimable"]]
     assert all(r["auc"]["best"] >= AUC_USABLE for r in abd), (
         "sec:andyresults says shoulder abduction reaches the bound at all its cut-points")
-    # "whereas the other two out-of-plane labels reach that bound at most thresholds"
+    # "whereas the other two out-of-plane labels reach that bound at more than half of the
+    # thresholds"
     for m in ("trunk_lateral", "arm_abd"):
         ok = [r for r in ANDYSP[m] if r["estimable"]]
         n_at = sum(r["auc"]["best"] >= AUC_USABLE for r in ok)
         assert 2 * n_at > len(ok), (
-            f"sec:andyresults says {m} reaches the bound at most usable thresholds, but it "
+            f"sec:andyresults says {m} reaches the bound at more than half of the thresholds, but it "
             f"reaches it at {n_at} of {len(ok)}")
     # "because the highest threshold leaves trunk twist and trunk lateral bend too few
     # positive frames in some training fold"
@@ -737,9 +758,10 @@ def test_andy_out_of_plane_below_in_plane_between_cameras():
 
 
 def test_andy_groups_hold_at_every_estimable_cut_point():
-    # sec:andyresults: "At every cut-point of the sweep at which both classes occur in every
-    # training fold, the mean cross-view kappa of the out-of-plane labels stays below that of
-    # the in-plane labels".
+    # sec:andyresults: "The mean kappa of the out-of-plane labels stays below that of the
+    # in-plane labels at every threshold of the sweep at which all \andyNLabels labels can
+    # be scored"; a threshold of the sweep is estimable where the label that it moves can be
+    # scored, and the other labels keep their scored thresholds.
     for m, rows in ANDYSP.items():
         for r in rows:
             if r["estimable"]:
