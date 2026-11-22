@@ -1,0 +1,321 @@
+{
+  "config": {
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "n_folds": 5,
+    "fold_axis": "factory",
+    "n_frames": 108000,
+    "n_plants": 5,
+    "n_subjects": 35
+  },
+  "per_modifier": {
+    "trunk_twist": {
+      "family": "orientation",
+      "prevalence": 0.4022,
+      "auc_worker": 0.8483,
+      "auc_plant": {
+        "mean": 0.8447,
+        "std": 0.0005,
+        "per_seed": [
+          0.8442,
+          0.8447,
+          0.8442,
+          0.8448,
+          0.8454
+        ]
+      },
+      "auc_by_plant": {
+        "1": 0.8214,
+        "2": 0.8803,
+        "3": 0.836,
+        "4": 0.8456,
+        "5": 0.8328
+      },
+      "auc_plant_sd_across_plants": 0.0225,
+      "drop_worker_to_plant": 0.0036
+    },
+    "trunk_bending": {
+      "family": "orientation",
+      "prevalence": 0.4656,
+      "auc_worker": 0.9214,
+      "auc_plant": {
+        "mean": 0.9203,
+        "std": 0.0008,
+        "per_seed": [
+          0.9195,
+          0.9204,
+          0.9199,
+          0.9202,
+          0.9215
+        ]
+      },
+      "auc_by_plant": {
+        "1": 0.9277,
+        "2": 0.9034,
+        "3": 0.8953,
+        "4": 0.9145,
+        "5": 0.9322
+      },
+      "auc_plant_sd_across_plants": 0.0156,
+      "drop_worker_to_plant": 0.0011
+    },
+    "upperarm_abduction": {
+      "family": "orientation",
+      "prevalence": 0.0495,
+      "auc_worker": 0.9683,
+      "auc_plant": {
+        "mean": 0.9691,
+        "std": 0.0011,
+        "per_seed": [
+          0.9696,
+          0.9672,
+          0.9702,
+          0.9695,
+          0.9692
+        ]
+      },
+      "auc_by_plant": {
+        "1": 0.9776,
+        "2": 0.9941,
+        "3": 0.952,
+        "4": 0.9519,
+        "5": 0.9694
+      },
+      "auc_plant_sd_across_plants": 0.0179,
+      "drop_worker_to_plant": -0.0008
+    },
+    "upperarm_across": {
+      "family": "orientation",
+      "prevalence": 0.1778,
+      "auc_worker": 0.9186,
+      "auc_plant": {
+        "mean": 0.9179,
+        "std": 0.0008,
+        "per_seed": [
+          0.9187,
+          0.9168,
+          0.9187,
+          0.9175,
+          0.918
+        ]
+      },
+      "auc_by_plant": {
+        "1": 0.8978,
+        "2": 0.9242,
+        "3": 0.9372,
+        "4": 0.9098,
+        "5": 0.9012
+      },
+      "auc_plant_sd_across_plants": 0.0165,
+      "drop_worker_to_plant": 0.0007
+    },
+    "lowerarm_outbody": {
+      "family": "orientation",
+      "prevalence": 0.7083,
+      "auc_worker": 0.8328,
+      "auc_plant": {
+        "mean": 0.8249,
+        "std": 0.001,
+        "per_seed": [
+          0.8236,
+          0.8265,
+          0.8249,
+          0.8248,
+          0.8248
+        ]
+      },
+      "auc_by_plant": {
+        "1": 0.8318,
+        "2": 0.8812,
+        "3": 0.8124,
+        "4": 0.8058,
+        "5": 0.807
+      },
+      "auc_plant_sd_across_plants": 0.0317,
+      "drop_worker_to_plant": 0.0079
+    },
+    "neck_bending": {
+      "family": "orientation",
+      "prevalence": 0.5841,
+      "auc_worker": 0.8029,
+      "auc_plant": {
+        "mean": 0.8027,
+        "std": 0.0007,
+        "per_seed": [
+          0.8024,
+          0.8035,
+          0.8029,
+          0.8028,
+          0.8017
+        ]
+      },
+      "auc_by_plant": {
+        "1": 0.7653,
+        "2": 0.8201,
+        "3": 0.8324,
+        "4": 0.757,
+        "5": 0.8025
+      },
+      "auc_plant_sd_across_plants": 0.0332,
+      "drop_worker_to_plant": 0.0002
+    },
+    "wrist_bending": {
+      "family": "orientation",
+      "prevalence": 0.0803,
+      "auc_worker": 0.8168,
+      "auc_plant": {
+        "mean": 0.8142,
+        "std": 0.0004,
+        "per_seed": [
+          0.8136,
+          0.8148,
+          0.8141,
+          0.8142,
+          0.8143
+        ]
+      },
+      "auc_by_plant": {
+        "1": 0.7673,
+        "2": 0.8542,
+        "3": 0.7862,
+        "4": 0.7713,
+        "5": 0.8147
+      },
+      "auc_plant_sd_across_plants": 0.0362,
+      "drop_worker_to_plant": 0.0026
+    },
+    "wrist_twisted": {
+      "family": "orientation",
+      "prevalence": 0.916,
+      "auc_worker": 0.8089,
+      "auc_plant": {
+        "mean": 0.8062,
+        "std": 0.0012,
+        "per_seed": [
+          0.8055,
+          0.8046,
+          0.8063,
+          0.8077,
+          0.807
+        ]
+      },
+      "auc_by_plant": {
+        "1": 0.8431,
+        "2": 0.8508,
+        "3": 0.8384,
+        "4": 0.7069,
+        "5": 0.8117
+      },
+      "auc_plant_sd_across_plants": 0.0596,
+      "drop_worker_to_plant": 0.0027
+    },
+    "wrist_twisted_end": {
+      "family": "orientation",
+      "prevalence": 0.0675,
+      "auc_worker": 0.8074,
+      "auc_plant": {
+        "mean": 0.8067,
+        "std": 0.0013,
+        "per_seed": [
+          0.8063,
+          0.8078,
+          0.8079,
+          0.8048,
+          0.8068
+        ]
+      },
+      "auc_by_plant": {
+        "1": 0.7579,
+        "2": 0.8575,
+        "3": 0.7783,
+        "4": 0.7609,
+        "5": 0.817
+      },
+      "auc_plant_sd_across_plants": 0.0424,
+      "drop_worker_to_plant": 0.0007
+    },
+    "legs_supported": {
+      "family": "support",
+      "prevalence": 0.0741,
+      "auc_worker": 0.7319,
+      "auc_plant": {
+        "mean": 0.6816,
+        "std": 0.0096,
+        "per_seed": [
+          0.697,
+          0.6841,
+          0.6744,
+          0.6735,
+          0.6791
+        ]
+      },
+      "auc_by_plant": {
+        "1": 0.6833,
+        "2": 0.5906,
+        "3": 0.684,
+        "4": 0.6497,
+        "5": 0.6207
+      },
+      "auc_plant_sd_across_plants": 0.0405,
+      "drop_worker_to_plant": 0.0503
+    },
+    "trunk_supported": {
+      "family": "support",
+      "prevalence": 0.0246,
+      "auc_worker": 0.2109,
+      "auc_plant": {
+        "mean": 0.218,
+        "std": 0.0319,
+        "per_seed": [
+          0.2499,
+          0.2438,
+          0.227,
+          0.179,
+          0.1902
+        ]
+      },
+      "auc_by_plant": {
+        "1": 0.5549,
+        "2": 0.5236,
+        "3": 0.4497,
+        "4": 0.7815,
+        "5": 0.6438
+      },
+      "auc_plant_sd_across_plants": 0.1274,
+      "drop_worker_to_plant": -0.0071
+    },
+    "upperarm_supported": {
+      "family": "support",
+      "prevalence": 0.0229,
+      "auc_worker": 0.521,
+      "auc_plant": {
+        "mean": 0.5531,
+        "std": 0.0126,
+        "per_seed": [
+          0.5332,
+          0.5579,
+          0.568,
+          0.553,
+          0.5533
+        ]
+      },
+      "auc_by_plant": {
+        "1": 0.6325,
+        "2": 0.5154,
+        "3": 0.5958,
+        "4": 0.6862,
+        "5": 0.5205
+      },
+      "auc_plant_sd_across_plants": 0.0733,
+      "drop_worker_to_plant": -0.0321
+    }
+  },
+  "non_estimable_plant": [
+    "trunk_supported"
+  ]
+}

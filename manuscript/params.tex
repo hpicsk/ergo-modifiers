@@ -1,0 +1,563 @@
+% >>> GENERATED (src/build_parameters.py) — do not hand-edit >>>
+% POPULATION: corpus | artifact: data/aihub/labels.parquet | unit: frames | size: nFrames
+\newcommand{\nFrames}{108,000}
+\newcommand{\nSubjects}{35}
+\newcommand{\nSeeds}{5}  % pop: design
+\newcommand{\orientMinAuc}{0.80}
+\newcommand{\minOrientAucOverAngles}{0.76}
+\newcommand{\nAngles}{3}
+\newcommand{\nFactories}{5}
+\newcommand{\nModifiersDelivered}{14}
+\newcommand{\nModifiersUsable}{12}
+\newcommand{\nKeypoints}{27}
+\newcommand{\nPostureBins}{5}
+\newcommand{\nOrientModifiers}{nine}  % pop: design
+\newcommand{\nFolds}{5}  % pop: design
+\newcommand{\nBoot}{2,000}  % pop: design
+\newcommand{\lightgbmVersion}{4.6.0}  % pop: design
+\newcommand{\torchvisionVersion}{0.28.0}  % pop: design
+\newcommand{\lgbmTrees}{300}  % pop: design
+\newcommand{\lgbmLeaves}{63}  % pop: design
+\newcommand{\lgbmRate}{0.05}  % pop: design
+\newcommand{\lgbmMinLeaf}{50}  % pop: design
+\newcommand{\lgbmFeatureFraction}{0.8}  % pop: design
+\newcommand{\rulaAdjustPlus}{+1}  % pop: design
+\newcommand{\rulaAdjustMinus}{-1}  % pop: design
+\newcommand{\prevNeckTwist}{99.95}
+\newcommand{\aucTrunkTwist}{0.848}
+\newcommand{\aucCiLoTrunkTwist}{0.832}
+\newcommand{\aucCiHiTrunkTwist}{0.865}
+\newcommand{\prevTrunkTwist}{40.2}
+\newcommand{\aucTrunkBend}{0.921}
+\newcommand{\aucCiLoTrunkBend}{0.898}
+\newcommand{\aucCiHiTrunkBend}{0.938}
+\newcommand{\prevTrunkBend}{46.6}
+\newcommand{\aucUpperarmAbduct}{0.968}
+\newcommand{\aucCiLoUpperarmAbduct}{0.934}
+\newcommand{\aucCiHiUpperarmAbduct}{0.986}
+\newcommand{\prevUpperarmAbduct}{5.0}
+\newcommand{\aucUpperarmAcross}{0.919}
+\newcommand{\aucCiLoUpperarmAcross}{0.901}
+\newcommand{\aucCiHiUpperarmAcross}{0.935}
+\newcommand{\prevUpperarmAcross}{17.8}
+\newcommand{\aucLowerarmOut}{0.833}
+\newcommand{\aucCiLoLowerarmOut}{0.803}
+\newcommand{\aucCiHiLowerarmOut}{0.871}
+\newcommand{\prevLowerarmOut}{70.8}
+\newcommand{\aucNeckBend}{0.803}
+\newcommand{\aucCiLoNeckBend}{0.773}
+\newcommand{\aucCiHiNeckBend}{0.836}
+\newcommand{\prevNeckBend}{58.4}
+\newcommand{\aucWristBend}{0.817}
+\newcommand{\aucCiLoWristBend}{0.785}
+\newcommand{\aucCiHiWristBend}{0.848}
+\newcommand{\prevWristBend}{8.0}
+\newcommand{\aucWristTwistAny}{0.809}
+\newcommand{\aucCiLoWristTwistAny}{0.775}
+\newcommand{\aucCiHiWristTwistAny}{0.846}
+\newcommand{\prevWristTwistAny}{91.6}
+\newcommand{\aucWristTwistEnd}{0.807}
+\newcommand{\aucCiLoWristTwistEnd}{0.772}
+\newcommand{\aucCiHiWristTwistEnd}{0.839}
+\newcommand{\prevWristTwistEnd}{6.8}
+\newcommand{\aucLegsSupport}{0.732}
+\newcommand{\aucCiLoLegsSupport}{0.615}
+\newcommand{\aucCiHiLegsSupport}{0.830}
+\newcommand{\prevLegsSupport}{7.4}
+\newcommand{\aucTrunkSupport}{0.211}
+\newcommand{\aucCiLoTrunkSupport}{0.078}
+\newcommand{\aucCiHiTrunkSupport}{0.725}
+\newcommand{\prevTrunkSupport}{2.5}
+\newcommand{\aucUpperarmSupport}{0.521}
+\newcommand{\aucCiLoUpperarmSupport}{0.447}
+\newcommand{\aucCiHiUpperarmSupport}{0.597}
+\newcommand{\prevUpperarmSupport}{2.3}
+% POPULATION: corpus | artifact: data/aihub/labels.parquet | unit: frames | size: nFrames
+\newcommand{\ablNBinFeatures}{18}  % pop: design
+\newcommand{\ablBinsOrientLo}{0.54}
+\newcommand{\ablBinsOrientHi}{0.79}
+\newcommand{\ablBinsTrunkTwist}{0.658}
+\newcommand{\ablBinsTrunkBend}{0.789}
+\newcommand{\ablBinsUpperarmAbduct}{0.977}
+\newcommand{\ablBinsUpperarmAcross}{0.552}
+\newcommand{\ablBinsLowerarmOut}{0.543}
+\newcommand{\ablBinsNeckBend}{0.705}
+\newcommand{\ablBinsWristBend}{0.626}
+\newcommand{\ablBinsWristTwistAny}{0.657}
+\newcommand{\ablBinsWristTwistEnd}{0.619}
+\newcommand{\ablBinsLegsSupport}{0.727}
+\newcommand{\ablBinsTrunkSupport}{0.664}
+\newcommand{\ablBinsUpperarmSupport}{0.477}
+\newcommand{\ctrlNPairs}{three}  % pop: design
+\newcommand{\ctrlAucMin}{0.772}
+\newcommand{\ctrlAucMax}{0.977}
+\newcommand{\ctrlMarginMin}{0.326}
+\newcommand{\ctrlLegsFoldsWon}{3}
+% POPULATION: corpus | artifact: data/aihub/labels.parquet | unit: frames | size: nFrames
+\newcommand{\adjKappaTotal}{0.447}
+\newcommand{\adjExactTotalPct}{41.2}
+\newcommand{\adjMaeTotal}{0.76}
+\newcommand{\adjKappaOrient}{0.456}
+\newcommand{\adjKappaContact}{-0.004}
+\newcommand{\adjMaeOrient}{0.75}
+\newcommand{\adjMaeContact}{0.030}
+\newcommand{\adjContactSharePct}{4.0}
+\newcommand{\adjGtMin}{-1}
+\newcommand{\adjGtMax}{6}
+\newcommand{\adjThreshold}{0.5}  % pop: design
+\newcommand{\adjThresholdLo}{0.3}  % pop: design
+\newcommand{\adjThresholdHi}{0.7}  % pop: design
+% POPULATION: est-crops | artifact: data/aihub/est_pose.parquet | unit: crops | size: nCropsEst
+\newcommand{\nCropsEst}{52,000}
+\newcommand{\nCropsTrainCap}{40,000}  % pop: design
+\newcommand{\nJointsEst}{13}  % pop: design
+\newcommand{\poseMissedPct}{0.01}
+\newcommand{\posePckb}{87.5}
+\newcommand{\poseMaxOrientDropAuc}{0.032}
+\newcommand{\aucGtTrunkTwist}{0.830}
+\newcommand{\aucEsTrunkTwist}{0.829}
+\newcommand{\dropTrunkTwist}{+0.001}
+\newcommand{\aucGtTrunkBend}{0.900}
+\newcommand{\aucEsTrunkBend}{0.904}
+\newcommand{\dropTrunkBend}{-0.003}
+\newcommand{\aucGtUpperarmAbduct}{0.978}
+\newcommand{\aucEsUpperarmAbduct}{0.964}
+\newcommand{\dropUpperarmAbduct}{+0.015}
+\newcommand{\aucGtUpperarmAcross}{0.911}
+\newcommand{\aucEsUpperarmAcross}{0.890}
+\newcommand{\dropUpperarmAcross}{+0.021}
+\newcommand{\aucGtLowerarmOut}{0.817}
+\newcommand{\aucEsLowerarmOut}{0.785}
+\newcommand{\dropLowerarmOut}{+0.032}
+\newcommand{\aucGtNeckBend}{0.739}
+\newcommand{\aucEsNeckBend}{0.734}
+\newcommand{\dropNeckBend}{+0.005}
+\newcommand{\aucGtWristBend}{0.793}
+\newcommand{\aucEsWristBend}{0.776}
+\newcommand{\dropWristBend}{+0.017}
+\newcommand{\aucGtWristTwistAny}{0.802}
+\newcommand{\aucEsWristTwistAny}{0.788}
+\newcommand{\dropWristTwistAny}{+0.014}
+\newcommand{\aucGtWristTwistEnd}{0.782}
+\newcommand{\aucEsWristTwistEnd}{0.767}
+\newcommand{\dropWristTwistEnd}{+0.015}
+\newcommand{\aucGtLegsSupport}{0.800}
+\newcommand{\aucEsLegsSupport}{0.764}
+\newcommand{\dropLegsSupport}{+0.036}
+\newcommand{\aucGtTrunkSupport}{0.432}
+\newcommand{\aucEsTrunkSupport}{0.410}
+\newcommand{\dropTrunkSupport}{+0.022}
+\newcommand{\aucGtUpperarmSupport}{0.488}
+\newcommand{\aucEsUpperarmSupport}{0.521}
+\newcommand{\dropUpperarmSupport}{-0.033}
+\newcommand{\adjKappaGtThirteen}{0.385}
+\newcommand{\adjKappaEstThirteen}{0.383}
+% POPULATION: corpus | artifact: data/aihub/labels.parquet | unit: frames | size: nFrames
+\newcommand{\siteMaxOrientDropAuc}{0.008}
+\newcommand{\aucSiteTrunkTwist}{0.845}
+\newcommand{\dropSiteTrunkTwist}{+0.004}
+\newcommand{\aucSiteTrunkBend}{0.920}
+\newcommand{\dropSiteTrunkBend}{+0.001}
+\newcommand{\aucSiteUpperarmAbduct}{0.969}
+\newcommand{\dropSiteUpperarmAbduct}{-0.001}
+\newcommand{\aucSiteUpperarmAcross}{0.918}
+\newcommand{\dropSiteUpperarmAcross}{+0.001}
+\newcommand{\aucSiteLowerarmOut}{0.825}
+\newcommand{\dropSiteLowerarmOut}{+0.008}
+\newcommand{\aucSiteNeckBend}{0.803}
+\newcommand{\dropSiteNeckBend}{+0.000}
+\newcommand{\aucSiteWristBend}{0.814}
+\newcommand{\dropSiteWristBend}{+0.003}
+\newcommand{\aucSiteWristTwistAny}{0.806}
+\newcommand{\dropSiteWristTwistAny}{+0.003}
+\newcommand{\aucSiteWristTwistEnd}{0.807}
+\newcommand{\dropSiteWristTwistEnd}{+0.001}
+\newcommand{\aucSiteLegsSupport}{0.682}
+\newcommand{\dropSiteLegsSupport}{+0.050}
+\newcommand{\aucSiteTrunkSupport}{0.218}
+\newcommand{\dropSiteTrunkSupport}{-0.007}
+\newcommand{\aucSiteUpperarmSupport}{0.553}
+\newcommand{\dropSiteUpperarmSupport}{-0.032}
+% POPULATION: xview-pairs | artifact: results/crossview.json:structure | unit: paired frames | size: nXviewFrames
+\newcommand{\nXviewSessions}{8}
+\newcommand{\nXviewFrames}{2,908}
+\newcommand{\nXviewWorkers}{3}
+\newcommand{\nXviewFactories}{1}
+\newcommand{\kappaXviewTrunkTwist}{-0.126}
+\newcommand{\kappaXviewCiLoTrunkTwist}{-0.207}
+\newcommand{\kappaXviewCiHiTrunkTwist}{-0.067}
+\newcommand{\agreeXviewTrunkTwist}{0.491}
+\newcommand{\prevGapXviewTrunkTwist}{16.0}
+\newcommand{\kappaXviewTrunkBend}{0.303}
+\newcommand{\kappaXviewCiLoTrunkBend}{0.179}
+\newcommand{\kappaXviewCiHiTrunkBend}{0.409}
+\newcommand{\agreeXviewTrunkBend}{0.664}
+\newcommand{\prevGapXviewTrunkBend}{3.3}
+\newcommand{\kappaXviewNeckBend}{0.120}
+\newcommand{\kappaXviewCiLoNeckBend}{0.001}
+\newcommand{\kappaXviewCiHiNeckBend}{0.211}
+\newcommand{\agreeXviewNeckBend}{0.561}
+\newcommand{\prevGapXviewNeckBend}{1.5}
+\newcommand{\kappaXviewUpperarmAbduct}{0.237}
+\newcommand{\kappaXviewCiLoUpperarmAbduct}{0.033}
+\newcommand{\kappaXviewCiHiUpperarmAbduct}{0.436}
+\newcommand{\agreeXviewUpperarmAbduct}{0.938}
+\newcommand{\prevGapXviewUpperarmAbduct}{0.2}
+\newcommand{\kappaXviewUpperarmAcross}{0.076}
+\newcommand{\kappaXviewCiLoUpperarmAcross}{0.003}
+\newcommand{\kappaXviewCiHiUpperarmAcross}{0.106}
+\newcommand{\agreeXviewUpperarmAcross}{0.887}
+\newcommand{\prevGapXviewUpperarmAcross}{0.8}
+\newcommand{\kappaXviewLowerarmOut}{0.158}
+\newcommand{\kappaXviewCiLoLowerarmOut}{-0.011}
+\newcommand{\kappaXviewCiHiLowerarmOut}{0.305}
+\newcommand{\agreeXviewLowerarmOut}{0.658}
+\newcommand{\prevGapXviewLowerarmOut}{0.2}
+\newcommand{\kappaXviewWristBend}{0.047}
+\newcommand{\kappaXviewCiLoWristBend}{0.006}
+\newcommand{\kappaXviewCiHiWristBend}{0.092}
+\newcommand{\agreeXviewWristBend}{0.861}
+\newcommand{\prevGapXviewWristBend}{1.9}
+\newcommand{\kappaXviewWristTwistAny}{0.077}
+\newcommand{\kappaXviewCiLoWristTwistAny}{0.002}
+\newcommand{\kappaXviewCiHiWristTwistAny}{0.179}
+\newcommand{\agreeXviewWristTwistAny}{0.802}
+\newcommand{\prevGapXviewWristTwistAny}{7.9}
+\newcommand{\kappaXviewWristTwistEnd}{0.028}
+\newcommand{\kappaXviewCiLoWristTwistEnd}{-0.016}
+\newcommand{\kappaXviewCiHiWristTwistEnd}{0.052}
+\newcommand{\agreeXviewWristTwistEnd}{0.887}
+\newcommand{\prevGapXviewWristTwistEnd}{1.2}
+\newcommand{\kappaXviewLegsSupport}{0.856}
+\newcommand{\kappaXviewCiLoLegsSupport}{0.623}
+\newcommand{\kappaXviewCiHiLegsSupport}{0.949}
+\newcommand{\agreeXviewLegsSupport}{0.954}
+\newcommand{\prevGapXviewLegsSupport}{0.1}
+\newcommand{\kappaXviewTrunkSupport}{-0.001}
+\newcommand{\kappaXviewCiLoTrunkSupport}{-0.001}
+\newcommand{\kappaXviewCiHiTrunkSupport}{0.000}
+\newcommand{\agreeXviewTrunkSupport}{0.998}
+\newcommand{\prevGapXviewTrunkSupport}{0.0}
+\newcommand{\kappaXviewUpperarmSupport}{0.112}
+\newcommand{\kappaXviewCiLoUpperarmSupport}{-0.009}
+\newcommand{\kappaXviewCiHiUpperarmSupport}{0.153}
+\newcommand{\agreeXviewUpperarmSupport}{0.966}
+\newcommand{\prevGapXviewUpperarmSupport}{1.9}
+\newcommand{\maxOrientXviewKappa}{0.303}
+\newcommand{\xviewSessLegsMin}{0.000}
+\newcommand{\xviewSessLegsMax}{0.941}
+\newcommand{\xviewSessLegsN}{5}
+\newcommand{\xviewLagMax}{1,000}  % pop: design
+\newcommand{\withinViewFloorTrunkTwist}{0.573}
+\newcommand{\xviewMinPairedFrames}{50}  % pop: design
+\newcommand{\xviewSensGridLo}{20}  % pop: design
+\newcommand{\xviewSensGridHi}{200}  % pop: design
+\newcommand{\xviewSensLo}{-0.126}
+\newcommand{\xviewSensHi}{-0.122}
+% POPULATION: xview-takepairs | artifact: results/crossview.json:tier3_near_simultaneous | unit: near-simultaneous clip pairs | size: nTakePairs
+\newcommand{\takePairDt}{60}  % pop: design
+\newcommand{\nTakePairs}{78}
+\newcommand{\nTakePairWorkers}{23}
+\newcommand{\nTakePairFactories}{5}
+\newcommand{\nNullPairs}{570}
+\newcommand{\takePairDtLo}{0}  % pop: design
+\newcommand{\takePairDtHi}{300}  % pop: design
+\newcommand{\nTakes}{137}
+\newcommand{\nTakesRoundedStamp}{26}
+\newcommand{\gapRatioTrunkTwist}{1.03}
+\newcommand{\gapRatioCiLoTrunkTwist}{0.58}
+\newcommand{\gapRatioCiHiTrunkTwist}{1.43}
+\newcommand{\gapRatioTrunkBend}{0.32}
+\newcommand{\gapRatioCiLoTrunkBend}{0.21}
+\newcommand{\gapRatioCiHiTrunkBend}{0.50}
+\newcommand{\gapRatioNeckBend}{0.63}
+\newcommand{\gapRatioCiLoNeckBend}{0.43}
+\newcommand{\gapRatioCiHiNeckBend}{0.85}
+\newcommand{\gapRatioUpperarmAbduct}{0.56}
+\newcommand{\gapRatioCiLoUpperarmAbduct}{0.31}
+\newcommand{\gapRatioCiHiUpperarmAbduct}{0.91}
+\newcommand{\gapRatioUpperarmAcross}{0.51}
+\newcommand{\gapRatioCiLoUpperarmAcross}{0.33}
+\newcommand{\gapRatioCiHiUpperarmAcross}{1.19}
+\newcommand{\gapRatioLowerarmOut}{0.79}
+\newcommand{\gapRatioCiLoLowerarmOut}{0.43}
+\newcommand{\gapRatioCiHiLowerarmOut}{1.00}
+\newcommand{\gapRatioWristBend}{0.36}
+\newcommand{\gapRatioCiLoWristBend}{0.27}
+\newcommand{\gapRatioCiHiWristBend}{0.51}
+\newcommand{\gapRatioWristTwistAny}{0.69}
+\newcommand{\gapRatioCiLoWristTwistAny}{0.31}
+\newcommand{\gapRatioCiHiWristTwistAny}{1.33}
+\newcommand{\gapRatioWristTwistEnd}{0.44}
+\newcommand{\gapRatioCiLoWristTwistEnd}{0.29}
+\newcommand{\gapRatioCiHiWristTwistEnd}{0.61}
+\newcommand{\gapRatioLegsSupport}{0.26}
+\newcommand{\gapRatioCiLoLegsSupport}{0.07}
+\newcommand{\gapRatioCiHiLegsSupport}{0.48}
+\newcommand{\gapRatioTrunkSupport}{0.85}
+\newcommand{\gapRatioCiLoTrunkSupport}{0.00}
+\newcommand{\gapRatioCiHiTrunkSupport}{2.05}
+\newcommand{\gapRatioUpperarmSupport}{0.81}
+\newcommand{\gapRatioCiLoUpperarmSupport}{0.34}
+\newcommand{\gapRatioCiHiUpperarmSupport}{1.14}
+\newcommand{\gapRatioSensLoTrunkTwist}{1.03}
+\newcommand{\gapRatioSensHiTrunkTwist}{1.46}
+\newcommand{\gapRatioSensLoLegsSupport}{0.18}
+\newcommand{\gapRatioSensHiLegsSupport}{0.26}
+% POPULATION: xview-pairs | artifact: results/crossview.json:structure | unit: paired frames | size: nXviewFrames
+\newcommand{\pairOrientMinAuc}{0.77}
+\newcommand{\pairOrientMinAucView}{0.73}
+\newcommand{\plantPairMaxDiff}{0.02}
+\newcommand{\withinPairMaxDiff}{0.03}
+\newcommand{\otherAucOrientMax}{0.73}
+\newcommand{\pairAucTrunkTwist}{0.84}
+\newcommand{\pairAucCiLoTrunkTwist}{0.80}
+\newcommand{\pairAucCiHiTrunkTwist}{0.86}
+\newcommand{\otherAucTrunkTwist}{0.35}
+\newcommand{\otherAucCiLoTrunkTwist}{0.29}
+\newcommand{\otherAucCiHiTrunkTwist}{0.40}
+\newcommand{\pairAucFirstTrunkTwist}{0.86}
+\newcommand{\pairAucSecondTrunkTwist}{0.81}
+\newcommand{\plantPairAucTrunkTwist}{0.83}
+\newcommand{\withinPairAucTrunkTwist}{0.83}
+\newcommand{\pairAucTrunkBend}{0.94}
+\newcommand{\pairAucCiLoTrunkBend}{0.92}
+\newcommand{\pairAucCiHiTrunkBend}{0.95}
+\newcommand{\otherAucTrunkBend}{0.73}
+\newcommand{\otherAucCiLoTrunkBend}{0.61}
+\newcommand{\otherAucCiHiTrunkBend}{0.78}
+\newcommand{\pairAucFirstTrunkBend}{0.94}
+\newcommand{\pairAucSecondTrunkBend}{0.94}
+\newcommand{\plantPairAucTrunkBend}{0.94}
+\newcommand{\withinPairAucTrunkBend}{0.93}
+\newcommand{\pairAucUpperarmAbduct}{0.98}
+\newcommand{\pairAucCiLoUpperarmAbduct}{0.97}
+\newcommand{\pairAucCiHiUpperarmAbduct}{0.99}
+\newcommand{\otherAucUpperarmAbduct}{0.70}
+\newcommand{\otherAucCiLoUpperarmAbduct}{0.54}
+\newcommand{\otherAucCiHiUpperarmAbduct}{0.85}
+\newcommand{\pairAucFirstUpperarmAbduct}{0.98}
+\newcommand{\pairAucSecondUpperarmAbduct}{0.98}
+\newcommand{\plantPairAucUpperarmAbduct}{0.98}
+\newcommand{\withinPairAucUpperarmAbduct}{0.98}
+\newcommand{\pairAucUpperarmAcross}{0.86}
+\newcommand{\pairAucCiLoUpperarmAcross}{0.78}
+\newcommand{\pairAucCiHiUpperarmAcross}{0.92}
+\newcommand{\otherAucUpperarmAcross}{0.57}
+\newcommand{\otherAucCiLoUpperarmAcross}{0.49}
+\newcommand{\otherAucCiHiUpperarmAcross}{0.61}
+\newcommand{\pairAucFirstUpperarmAcross}{0.85}
+\newcommand{\pairAucSecondUpperarmAcross}{0.88}
+\newcommand{\plantPairAucUpperarmAcross}{0.85}
+\newcommand{\withinPairAucUpperarmAcross}{0.85}
+\newcommand{\pairAucLowerarmOut}{0.89}
+\newcommand{\pairAucCiLoLowerarmOut}{0.85}
+\newcommand{\pairAucCiHiLowerarmOut}{0.92}
+\newcommand{\otherAucLowerarmOut}{0.64}
+\newcommand{\otherAucCiLoLowerarmOut}{0.52}
+\newcommand{\otherAucCiHiLowerarmOut}{0.72}
+\newcommand{\pairAucFirstLowerarmOut}{0.91}
+\newcommand{\pairAucSecondLowerarmOut}{0.87}
+\newcommand{\plantPairAucLowerarmOut}{0.88}
+\newcommand{\withinPairAucLowerarmOut}{0.88}
+\newcommand{\pairAucNeckBend}{0.77}
+\newcommand{\pairAucCiLoNeckBend}{0.72}
+\newcommand{\pairAucCiHiNeckBend}{0.81}
+\newcommand{\otherAucNeckBend}{0.64}
+\newcommand{\otherAucCiLoNeckBend}{0.55}
+\newcommand{\otherAucCiHiNeckBend}{0.69}
+\newcommand{\pairAucFirstNeckBend}{0.73}
+\newcommand{\pairAucSecondNeckBend}{0.81}
+\newcommand{\plantPairAucNeckBend}{0.78}
+\newcommand{\withinPairAucNeckBend}{0.75}
+\newcommand{\pairAucWristBend}{0.78}
+\newcommand{\pairAucCiLoWristBend}{0.72}
+\newcommand{\pairAucCiHiWristBend}{0.82}
+\newcommand{\otherAucWristBend}{0.65}
+\newcommand{\otherAucCiLoWristBend}{0.59}
+\newcommand{\otherAucCiHiWristBend}{0.67}
+\newcommand{\pairAucFirstWristBend}{0.75}
+\newcommand{\pairAucSecondWristBend}{0.80}
+\newcommand{\plantPairAucWristBend}{0.78}
+\newcommand{\withinPairAucWristBend}{0.75}
+\newcommand{\pairAucWristTwistAny}{0.87}
+\newcommand{\pairAucCiLoWristTwistAny}{0.83}
+\newcommand{\pairAucCiHiWristTwistAny}{0.90}
+\newcommand{\otherAucWristTwistAny}{0.61}
+\newcommand{\otherAucCiLoWristTwistAny}{0.45}
+\newcommand{\otherAucCiHiWristTwistAny}{0.73}
+\newcommand{\pairAucFirstWristTwistAny}{0.86}
+\newcommand{\pairAucSecondWristTwistAny}{0.86}
+\newcommand{\plantPairAucWristTwistAny}{0.87}
+\newcommand{\withinPairAucWristTwistAny}{0.86}
+\newcommand{\pairAucWristTwistEnd}{0.77}
+\newcommand{\pairAucCiLoWristTwistEnd}{0.71}
+\newcommand{\pairAucCiHiWristTwistEnd}{0.81}
+\newcommand{\otherAucWristTwistEnd}{0.65}
+\newcommand{\otherAucCiLoWristTwistEnd}{0.58}
+\newcommand{\otherAucCiHiWristTwistEnd}{0.67}
+\newcommand{\pairAucFirstWristTwistEnd}{0.74}
+\newcommand{\pairAucSecondWristTwistEnd}{0.80}
+\newcommand{\plantPairAucWristTwistEnd}{0.77}
+\newcommand{\withinPairAucWristTwistEnd}{0.74}
+\newcommand{\pairAucLegsSupport}{0.75}
+\newcommand{\pairAucCiLoLegsSupport}{0.63}
+\newcommand{\pairAucCiHiLegsSupport}{0.92}
+\newcommand{\otherAucLegsSupport}{0.75}
+\newcommand{\otherAucCiLoLegsSupport}{0.63}
+\newcommand{\otherAucCiHiLegsSupport}{0.92}
+\newcommand{\pairAucFirstLegsSupport}{0.78}
+\newcommand{\pairAucSecondLegsSupport}{0.72}
+\newcommand{\plantPairAucLegsSupport}{0.69}
+\newcommand{\withinPairAucLegsSupport}{0.71}
+\newcommand{\pairAucTrunkSupport}{0.64}
+\newcommand{\pairAucCiLoTrunkSupport}{0.29}
+\newcommand{\pairAucCiHiTrunkSupport}{0.93}
+\newcommand{\otherAucTrunkSupport}{0.65}
+\newcommand{\otherAucCiLoTrunkSupport}{0.25}
+\newcommand{\otherAucCiHiTrunkSupport}{0.98}
+\newcommand{\pairAucFirstTrunkSupport}{0.73}
+\newcommand{\pairAucSecondTrunkSupport}{0.50}
+\newcommand{\plantPairAucTrunkSupport}{0.83}
+\newcommand{\withinPairAucTrunkSupport}{0.77}
+\newcommand{\pairAucUpperarmSupport}{0.59}
+\newcommand{\pairAucCiLoUpperarmSupport}{0.42}
+\newcommand{\pairAucCiHiUpperarmSupport}{0.72}
+\newcommand{\otherAucUpperarmSupport}{0.53}
+\newcommand{\otherAucCiLoUpperarmSupport}{0.43}
+\newcommand{\otherAucCiHiUpperarmSupport}{0.65}
+\newcommand{\pairAucFirstUpperarmSupport}{0.60}
+\newcommand{\pairAucSecondUpperarmSupport}{0.59}
+\newcommand{\plantPairAucUpperarmSupport}{0.66}
+\newcommand{\withinPairAucUpperarmSupport}{0.60}
+% POPULATION: andy-scored | artifact: results/andy_score.json | unit: trials | size: andyTrials
+\newcommand{\andyParticipants}{13}
+\newcommand{\andyTrials}{194}
+\newcommand{\andyTrialsXview}{121}
+\newcommand{\andyTrialsGt}{112}
+\newcommand{\andyAucUsable}{0.70}  % pop: design
+\newcommand{\andyNLabels}{six}  % pop: design
+\newcommand{\andyCutTrunkFlexion}{20}
+\newcommand{\andyCutTrunkTwist}{10}
+\newcommand{\andyCutArmElev}{45}
+\newcommand{\andyCutArmAbd}{30}
+\newcommand{\andyCutNeckFlexion}{20}
+\newcommand{\andyCutTrunkLateral}{10}
+\newcommand{\andyAucTrunkFlexion}{0.987}
+\newcommand{\andyAucCiLoTrunkFlexion}{0.979}
+\newcommand{\andyAucCiHiTrunkFlexion}{0.994}
+\newcommand{\andyAucOneTrunkFlexion}{0.987}
+\newcommand{\andyFidKappaOneTrunkFlexion}{0.876}
+\newcommand{\andyFidKappaTwoTrunkFlexion}{0.848}
+\newcommand{\andyXviewKappaTrunkFlexion}{0.840}
+\newcommand{\andyXviewKappaCiLoTrunkFlexion}{0.800}
+\newcommand{\andyXviewKappaCiHiTrunkFlexion}{0.877}
+\newcommand{\andyAucTrunkTwist}{0.721}
+\newcommand{\andyAucCiLoTrunkTwist}{0.668}
+\newcommand{\andyAucCiHiTrunkTwist}{0.766}
+\newcommand{\andyAucOneTrunkTwist}{0.649}
+\newcommand{\andyFidKappaOneTrunkTwist}{0.112}
+\newcommand{\andyFidKappaTwoTrunkTwist}{0.247}
+\newcommand{\andyXviewKappaTrunkTwist}{0.293}
+\newcommand{\andyXviewKappaCiLoTrunkTwist}{0.187}
+\newcommand{\andyXviewKappaCiHiTrunkTwist}{0.379}
+\newcommand{\andyAucArmElev}{0.946}
+\newcommand{\andyAucCiLoArmElev}{0.915}
+\newcommand{\andyAucCiHiArmElev}{0.969}
+\newcommand{\andyAucOneArmElev}{0.945}
+\newcommand{\andyFidKappaOneArmElev}{0.702}
+\newcommand{\andyFidKappaTwoArmElev}{0.726}
+\newcommand{\andyXviewKappaArmElev}{0.632}
+\newcommand{\andyXviewKappaCiLoArmElev}{0.518}
+\newcommand{\andyXviewKappaCiHiArmElev}{0.751}
+\newcommand{\andyAucArmAbd}{0.905}
+\newcommand{\andyAucCiLoArmAbd}{0.845}
+\newcommand{\andyAucCiHiArmAbd}{0.935}
+\newcommand{\andyAucOneArmAbd}{0.905}
+\newcommand{\andyFidKappaOneArmAbd}{0.434}
+\newcommand{\andyFidKappaTwoArmAbd}{0.374}
+\newcommand{\andyXviewKappaArmAbd}{0.464}
+\newcommand{\andyXviewKappaCiLoArmAbd}{0.314}
+\newcommand{\andyXviewKappaCiHiArmAbd}{0.562}
+\newcommand{\andyAucNeckFlexion}{0.952}
+\newcommand{\andyAucCiLoNeckFlexion}{0.934}
+\newcommand{\andyAucCiHiNeckFlexion}{0.966}
+\newcommand{\andyAucOneNeckFlexion}{0.952}
+\newcommand{\andyFidKappaOneNeckFlexion}{0.742}
+\newcommand{\andyFidKappaTwoNeckFlexion}{0.728}
+\newcommand{\andyXviewKappaNeckFlexion}{0.695}
+\newcommand{\andyXviewKappaCiLoNeckFlexion}{0.612}
+\newcommand{\andyXviewKappaCiHiNeckFlexion}{0.754}
+\newcommand{\andyAucTrunkLateral}{0.861}
+\newcommand{\andyAucCiLoTrunkLateral}{0.574}
+\newcommand{\andyAucCiHiTrunkLateral}{0.955}
+\newcommand{\andyAucOneTrunkLateral}{0.861}
+\newcommand{\andyFidKappaOneTrunkLateral}{0.324}
+\newcommand{\andyFidKappaTwoTrunkLateral}{0.143}
+\newcommand{\andyXviewKappaTrunkLateral}{0.151}
+\newcommand{\andyXviewKappaCiLoTrunkLateral}{0.022}
+\newcommand{\andyXviewKappaCiHiTrunkLateral}{0.267}
+\newcommand{\andyAdjOutOfPlane}{0.303}
+\newcommand{\andyAdjInPlane}{0.722}
+\newcommand{\andyAdjMaxOutOfPlane}{0.464}
+\newcommand{\andyAdjMinInPlane}{0.632}
+\newcommand{\andyGapMean}{0.419}
+\newcommand{\andyGapMeanCiLo}{0.350}
+\newcommand{\andyGapMeanCiHi}{0.519}
+\newcommand{\andyGapMin}{0.168}
+\newcommand{\andyGapMinCiLo}{0.074}
+\newcommand{\andyGapMinCiHi}{0.303}
+% POPULATION: andy-sync | artifact: results/andy_sync.json | unit: sync-validation trials | size: andySyncValTrials
+\newcommand{\andySyncCorrMin}{0.60}  % pop: design
+\newcommand{\andySyncResidMax}{0.5}  % pop: design
+\newcommand{\andySyncValTrials}{15}
+\newcommand{\andySyncResidMed}{0.04}
+% POPULATION: andy-probe | artifact: results/andy_prevalence.json | unit: probe trials | size: -
+\newcommand{\andyPrevMin}{1.1}
+% POPULATION: andy-sweep | artifact: results/andy_sensitivity.json | unit: cut-points | size: -
+\newcommand{\andySweepLo}{5}  % pop: design
+\newcommand{\andySweepHi}{30}  % pop: design
+\newcommand{\andySweepN}{six}  % pop: design
+\newcommand{\andySensEstTrunkTwist}{5}
+\newcommand{\andySensRecovTrunkTwist}{2}
+\newcommand{\andySensAucLoTrunkTwist}{0.506}
+\newcommand{\andySensAucHiTrunkTwist}{0.741}
+\newcommand{\andySensEstTrunkLateral}{5}
+\newcommand{\andySensRecovTrunkLateral}{4}
+\newcommand{\andySensAucLoTrunkLateral}{0.576}
+\newcommand{\andySensAucHiTrunkLateral}{0.861}
+\newcommand{\andySensEstArmAbd}{6}
+\newcommand{\andySensRecovArmAbd}{6}
+\newcommand{\andySensAucLoArmAbd}{0.806}
+\newcommand{\andySensAucHiArmAbd}{0.905}
+% <<< GENERATED <<<
+
+% --- MANUAL region (hand-edited) ---
+% POPULATION: corpus | artifact: data/aihub/labels.parquet | unit: frames | size: nFrames
+\newcommand{\datasetName}{AI\,Hub Musculoskeletal Burden Factors dataset}
+% The settings that the code fixes are generated above and tagged `% pop: design`;
+% they range over no data and cross nothing.
+% POPULATION: design | artifact: src/config.py | unit: settings | size: -
+% Figures that cited works report. Each block's
+% artifact is the cited work, which no script holds, so these are typed from the work
+% and checked against it.
+% POPULATION: cited-lee2020camera | artifact: references.bib:lee2020camera | unit: figures reported in lee2020camera | size: -
+\newcommand{\leeAngleOblique}{45}
+\newcommand{\leeNObserversCap}{Four}
+% POPULATION: cited-kwon2022singleview | artifact: references.bib:kwon2022singleview | unit: figures reported in kwon2022singleview | size: -
+\newcommand{\kwonNExperts}{three}
+
+% --- Registered population crossings ---
+% A sentence printing macros from two populations reads as one measurement. Each
+% line below registers a pair the manuscript crosses on purpose, with the reason;
+% test_assertions fails any other crossing rather than leaving it for a reader to
+% catch. Design constants range over no data and cross nothing, so they are exempt.
+% CROSSING: corpus + xview-pairs | reason: the paper's claim sets the same-view AUC over
+%   the corpus beside the same-view AUC and the cross-view kappa on the paired frames;
+%   each sentence that crosses names the corpus and the paired frames beside their numbers.
+% CROSSING: corpus + est-crops | reason: sec:sameview states the two appendix checks in
+%   one sentence, the estimated-pose bound on the crops and the held-out-plant bound over
+%   the corpus, each beside the condition that it measures; no number combines the two.
+% CROSSING: xview-pairs + xview-takepairs | reason: tab:crossview sets each modifier's
+%   paired-frame kappa beside its near-simultaneous-clip ratio, and the caption names the
+%   clip pairs, workers and plants of the second; no row arithmetic combines them.

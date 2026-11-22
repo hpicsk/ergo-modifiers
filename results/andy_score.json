@@ -1,0 +1,234 @@
+{
+  "config": {
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "n_folds": 5,
+    "n_joints": 13,
+    "n_boot": 2000,
+    "thresholds_deg": {
+      "trunk_flexion": 20,
+      "trunk_lateral": 10,
+      "trunk_twist": 10,
+      "arm_elev": 45,
+      "arm_abd": 30,
+      "neck_flexion": 20
+    },
+    "estimator": "torchvision keypointrcnn_resnet50_fpn (COCO, no fine-tuning)"
+  },
+  "structure": {
+    "n_common_trials": 194,
+    "n_synced_abs": 112,
+    "n_synced_rel": 121,
+    "n_participants": {
+      "1": 13,
+      "2": 13
+    },
+    "n_frames": {
+      "1": 293732,
+      "2": 299331
+    }
+  },
+  "single_camera_auc": {
+    "trunk_flexion": {
+      "best_cam": 1,
+      "auc": 0.9866,
+      "ci95": [
+        0.9791,
+        0.9936
+      ],
+      "cam1": 0.9866,
+      "cam2": 0.9796
+    },
+    "trunk_twist": {
+      "best_cam": 2,
+      "auc": 0.7205,
+      "ci95": [
+        0.668,
+        0.766
+      ],
+      "cam1": 0.6488,
+      "cam2": 0.7205
+    },
+    "arm_elev": {
+      "best_cam": 2,
+      "auc": 0.946,
+      "ci95": [
+        0.915,
+        0.969
+      ],
+      "cam1": 0.9453,
+      "cam2": 0.946
+    },
+    "arm_abd": {
+      "best_cam": 1,
+      "auc": 0.9047,
+      "ci95": [
+        0.8445,
+        0.935
+      ],
+      "cam1": 0.9047,
+      "cam2": 0.8613
+    },
+    "neck_flexion": {
+      "best_cam": 1,
+      "auc": 0.9524,
+      "ci95": [
+        0.9341,
+        0.9656
+      ],
+      "cam1": 0.9524,
+      "cam2": 0.9496
+    },
+    "trunk_lateral": {
+      "best_cam": 1,
+      "auc": 0.8609,
+      "ci95": [
+        0.5737,
+        0.9549
+      ],
+      "cam1": 0.8609,
+      "cam2": 0.7448
+    }
+  },
+  "crossview": {
+    "trunk_flexion": {
+      "kappa": 0.8395,
+      "ci95": [
+        0.7996,
+        0.8766
+      ],
+      "n_paired": 268928,
+      "n_participants": 13
+    },
+    "trunk_twist": {
+      "kappa": 0.2928,
+      "ci95": [
+        0.187,
+        0.3785
+      ],
+      "n_paired": 268928,
+      "n_participants": 13
+    },
+    "arm_elev": {
+      "kappa": 0.6319,
+      "ci95": [
+        0.5179,
+        0.7514
+      ],
+      "n_paired": 268928,
+      "n_participants": 13
+    },
+    "arm_abd": {
+      "kappa": 0.464,
+      "ci95": [
+        0.3141,
+        0.5618
+      ],
+      "n_paired": 268928,
+      "n_participants": 13
+    },
+    "neck_flexion": {
+      "kappa": 0.6948,
+      "ci95": [
+        0.6116,
+        0.7537
+      ],
+      "n_paired": 268928,
+      "n_participants": 13
+    },
+    "trunk_lateral": {
+      "kappa": 0.1514,
+      "ci95": [
+        0.0218,
+        0.2667
+      ],
+      "n_paired": 268928,
+      "n_participants": 13
+    }
+  },
+  "plane_groups": {
+    "mean_kappa_out_of_plane": 0.3027,
+    "mean_kappa_in_plane": 0.7221,
+    "mean_gap": 0.4193,
+    "mean_gap_ci95": [
+      0.3502,
+      0.519
+    ],
+    "max_out_of_plane": 0.464,
+    "min_in_plane": 0.6319,
+    "min_in_minus_max_out": 0.1679,
+    "min_in_minus_max_out_ci95": [
+      0.074,
+      0.3029
+    ],
+    "out_of_plane": [
+      "trunk_twist",
+      "trunk_lateral",
+      "arm_abd"
+    ],
+    "in_plane": [
+      "trunk_flexion",
+      "arm_elev",
+      "neck_flexion"
+    ]
+  },
+  "fidelity": {
+    "1": {
+      "trunk_flexion": {
+        "kappa": 0.8761,
+        "error": 0.0552
+      },
+      "trunk_twist": {
+        "kappa": 0.1123,
+        "error": 0.2463
+      },
+      "arm_elev": {
+        "kappa": 0.702,
+        "error": 0.0755
+      },
+      "arm_abd": {
+        "kappa": 0.4339,
+        "error": 0.084
+      },
+      "neck_flexion": {
+        "kappa": 0.742,
+        "error": 0.1265
+      },
+      "trunk_lateral": {
+        "kappa": 0.3243,
+        "error": 0.0178
+      }
+    },
+    "2": {
+      "trunk_flexion": {
+        "kappa": 0.8475,
+        "error": 0.0664
+      },
+      "trunk_twist": {
+        "kappa": 0.2474,
+        "error": 0.2066
+      },
+      "arm_elev": {
+        "kappa": 0.7262,
+        "error": 0.0781
+      },
+      "arm_abd": {
+        "kappa": 0.3741,
+        "error": 0.0992
+      },
+      "neck_flexion": {
+        "kappa": 0.7281,
+        "error": 0.1335
+      },
+      "trunk_lateral": {
+        "kappa": 0.1434,
+        "error": 0.0274
+      }
+    }
+  }
+}

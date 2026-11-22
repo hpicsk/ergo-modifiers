@@ -1,0 +1,5 @@
+A 2-D skeleton predicts each view's RULA/REBA orientation labels at AUC 0.77 or more.
+On the same frames, two simultaneous views' trunk-twist labels agree at kappa -0.13.
+Against the other view's trunk-twist label, the same predictions reach AUC 0.35.
+Only leg support's labels agree between the two views, at kappa 0.86.
+A same-view AUC does not show how well a skeleton recovers a posture.

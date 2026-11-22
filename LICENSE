@@ -1,0 +1,59 @@
+Scope
+=====
+
+The MIT license below covers the source code in this repository: everything
+under `src/`, the root-level `run_full_pipeline.py` and `test_assertions.py`,
+and the build files `pyproject.toml` and `requirements.txt`.
+
+It does not cover the following, and nothing in it should be read as granting
+rights over them.
+
+`data/`, and every file in `results/` except those named `andy_*`
+    The frames' AI Hub file names, the keypoint map, the estimator-error summary
+    and the result files derive from the AI Hub dataset "Artificial Intelligence
+    Data for Preventing Musculoskeletal Burden Factors in Manufacturing Workers"
+    (AI Hub dataset 71439), which the
+    National Information Society Agency (NIA) of the Republic of Korea
+    distributes through AI Hub. Their use is governed by the AI Hub usage policy
+    (https://www.aihub.or.kr/intrcn/guid/usagepolicy.do), not by this license.
+    That policy requires every use of the data, and every work derived from it,
+    to state that the data are a result of NIA's project. They are identifiers
+    and aggregates, published here so that the results reported in the
+    accompanying paper can be checked. No record-level label of the dataset is
+    published: `data/aihub/`, where the code regenerates the labels from a copy
+    of the dataset, is kept out of the repository.
+
+`results/andy_*`
+    These result files derive from the AnDy dataset of Maurice et al., released
+    on Zenodo (https://doi.org/10.5281/zenodo.3254403) under the Creative
+    Commons Attribution 4.0 International license (CC BY 4.0). Their use is
+    governed by that license, not by this one.
+
+`manuscript/`, and the Markdown documents at the repository root
+    The manuscript, its bibliography, figure, highlights and parameter file, and
+    the README.
+    Copyright (c) 2026 Sungwoo Kang. All rights reserved.
+
+
+MIT License
+===========
+
+Copyright (c) 2026 Sungwoo Kang
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

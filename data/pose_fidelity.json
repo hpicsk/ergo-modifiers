@@ -1,0 +1,23 @@
+{
+  "n_scored_joints": 659612,
+  "n_missed_detections": 7,
+  "norm_err_mean": 0.068,
+  "norm_err_median": 0.027,
+  "pckb_0.1": 0.8753,
+  "pckb_0.2": 0.9432,
+  "per_joint_norm_err_median": {
+    "nose": 0.0308,
+    "left_shoulder": 0.0232,
+    "right_shoulder": 0.0223,
+    "left_elbow": 0.0236,
+    "right_elbow": 0.0213,
+    "left_wrist": 0.0321,
+    "right_wrist": 0.0289,
+    "left_hip": 0.0363,
+    "right_hip": 0.0349,
+    "left_knee": 0.0252,
+    "right_knee": 0.0233,
+    "left_ankle": 0.028,
+    "right_ankle": 0.0249
+  }
+}

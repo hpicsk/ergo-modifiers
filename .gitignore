@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+
+# LaTeX build artifacts (regenerable from main.tex + references.bib)
+*.aux
+*.log
+*.fls
+*.fdb_latexmk
+*.out
+*.blg
+*.bbl
+*.spl
+*.synctex.gz
+main.pdf
+
+# Working audit instruments: anything that records a check and its verdict for
+# the authors rather than a result for a reader. The manuscript's availability
+# statement points readers at this repository, so a tracked file is published
+# and read as part of the submission. One ignored directory rather than
+# one line per report, so an instrument written next week is covered without
+# anybody editing this file.
+/_internal/
+
+# Record-level tables derived from the AI Hub corpus: its labels, boxes and keypoints,
+# and the estimated-pose table that carries the keypoint labels beside the estimates.
+# The AI Hub usage policy bars providing the data to others without approval, so each
+# clone regenerates them from its own copy of the corpus (src/preprocess/, README.md).
+/data/aihub/
+
+# The corpus builder's own distribution files (the dataset guide and the
+# labelling manual) and the publisher's LaTeX template. Redistributing them is
+# theirs to license, not ours. What the analysis reads off them is stated in the
+# dataset section, and nothing under src/ opens them. Obtain them from the AI Hub
+# portal entry for the Artificial Intelligence Data for Preventing
+# Musculoskeletal Burden Factors in Manufacturing Workers dataset.
+docs/
+els-cas-templates.zip

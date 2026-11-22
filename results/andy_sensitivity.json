@@ -1,0 +1,460 @@
+{
+  "config": {
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "n_folds": 5,
+    "sweep": [
+      5,
+      10,
+      15,
+      20,
+      25,
+      30
+    ],
+    "swept": [
+      "trunk_twist",
+      "trunk_lateral",
+      "arm_abd"
+    ],
+    "primary": {
+      "trunk_flexion": 20,
+      "trunk_lateral": 10,
+      "trunk_twist": 10,
+      "arm_elev": 45,
+      "arm_abd": 30,
+      "neck_flexion": 20
+    },
+    "auc_usable": 0.7
+  },
+  "reproduction_of_andy_score_at_primary": {
+    "per_modifier": {
+      "trunk_twist": {
+        "auc_gap": 0.0,
+        "kappa_gap": 0.0
+      },
+      "trunk_lateral": {
+        "auc_gap": 0.0,
+        "kappa_gap": 0.0
+      },
+      "arm_abd": {
+        "auc_gap": 0.0,
+        "kappa_gap": 0.0
+      }
+    },
+    "worst_gap": 0.0
+  },
+  "per_modifier": {
+    "trunk_twist": [
+      {
+        "threshold_deg": 5,
+        "estimable": true,
+        "prevalence": {
+          "1": 0.36477,
+          "2": 0.36231
+        },
+        "auc": {
+          "cam1": 0.6647,
+          "cam2": 0.6994,
+          "best_cam": 2,
+          "best": 0.6994
+        },
+        "xview_kappa": 0.3569,
+        "plane_groups": {
+          "mean_kappa_out_of_plane": 0.3241,
+          "mean_kappa_in_plane": 0.7221,
+          "out_of_plane_below_in_plane": true
+        }
+      },
+      {
+        "threshold_deg": 10,
+        "estimable": true,
+        "prevalence": {
+          "1": 0.10812,
+          "2": 0.11461
+        },
+        "auc": {
+          "cam1": 0.6488,
+          "cam2": 0.7205,
+          "best_cam": 2,
+          "best": 0.7205
+        },
+        "xview_kappa": 0.2928,
+        "plane_groups": {
+          "mean_kappa_out_of_plane": 0.3027,
+          "mean_kappa_in_plane": 0.7221,
+          "out_of_plane_below_in_plane": true
+        }
+      },
+      {
+        "threshold_deg": 15,
+        "estimable": true,
+        "prevalence": {
+          "1": 0.02424,
+          "2": 0.02971
+        },
+        "auc": {
+          "cam1": 0.6502,
+          "cam2": 0.7408,
+          "best_cam": 2,
+          "best": 0.7408
+        },
+        "xview_kappa": 0.1925,
+        "plane_groups": {
+          "mean_kappa_out_of_plane": 0.2693,
+          "mean_kappa_in_plane": 0.7221,
+          "out_of_plane_below_in_plane": true
+        }
+      },
+      {
+        "threshold_deg": 20,
+        "estimable": true,
+        "prevalence": {
+          "1": 0.00476,
+          "2": 0.006
+        },
+        "auc": {
+          "cam1": 0.4594,
+          "cam2": 0.5065,
+          "best_cam": 2,
+          "best": 0.5065
+        },
+        "xview_kappa": 0.225,
+        "plane_groups": {
+          "mean_kappa_out_of_plane": 0.2801,
+          "mean_kappa_in_plane": 0.7221,
+          "out_of_plane_below_in_plane": true
+        }
+      },
+      {
+        "threshold_deg": 25,
+        "estimable": true,
+        "prevalence": {
+          "1": 0.00032,
+          "2": 0.00075
+        },
+        "auc": {
+          "cam1": 0.5088,
+          "cam2": 0.6351,
+          "best_cam": 2,
+          "best": 0.6351
+        },
+        "xview_kappa": -0.0028,
+        "plane_groups": {
+          "mean_kappa_out_of_plane": 0.2042,
+          "mean_kappa_in_plane": 0.7221,
+          "out_of_plane_below_in_plane": true
+        }
+      },
+      {
+        "threshold_deg": 30,
+        "estimable": false,
+        "prevalence": {
+          "1": 3e-05,
+          "2": 0.0001
+        },
+        "auc": {
+          "cam1": 0.458,
+          "cam2": 0.3726,
+          "best_cam": 1,
+          "best": 0.458
+        },
+        "xview_kappa": 0.0585,
+        "plane_groups": {
+          "mean_kappa_out_of_plane": 0.2246,
+          "mean_kappa_in_plane": 0.7221,
+          "out_of_plane_below_in_plane": true
+        }
+      }
+    ],
+    "trunk_lateral": [
+      {
+        "threshold_deg": 5,
+        "estimable": true,
+        "prevalence": {
+          "1": 0.11706,
+          "2": 0.11861
+        },
+        "auc": {
+          "cam1": 0.8267,
+          "cam2": 0.8327,
+          "best_cam": 2,
+          "best": 0.8327
+        },
+        "xview_kappa": 0.4625,
+        "plane_groups": {
+          "mean_kappa_out_of_plane": 0.4064,
+          "mean_kappa_in_plane": 0.7221,
+          "out_of_plane_below_in_plane": true
+        }
+      },
+      {
+        "threshold_deg": 10,
+        "estimable": true,
+        "prevalence": {
+          "1": 0.01487,
+          "2": 0.01708
+        },
+        "auc": {
+          "cam1": 0.8609,
+          "cam2": 0.7448,
+          "best_cam": 1,
+          "best": 0.8609
+        },
+        "xview_kappa": 0.1514,
+        "plane_groups": {
+          "mean_kappa_out_of_plane": 0.3027,
+          "mean_kappa_in_plane": 0.7221,
+          "out_of_plane_below_in_plane": true
+        }
+      },
+      {
+        "threshold_deg": 15,
+        "estimable": true,
+        "prevalence": {
+          "1": 0.00421,
+          "2": 0.00556
+        },
+        "auc": {
+          "cam1": 0.5759,
+          "cam2": 0.5487,
+          "best_cam": 1,
+          "best": 0.5759
+        },
+        "xview_kappa": 0.1459,
+        "plane_groups": {
+          "mean_kappa_out_of_plane": 0.3009,
+          "mean_kappa_in_plane": 0.7221,
+          "out_of_plane_below_in_plane": true
+        }
+      },
+      {
+        "threshold_deg": 20,
+        "estimable": true,
+        "prevalence": {
+          "1": 0.00191,
+          "2": 0.00285
+        },
+        "auc": {
+          "cam1": 0.7502,
+          "cam2": 0.5636,
+          "best_cam": 1,
+          "best": 0.7502
+        },
+        "xview_kappa": 0.0172,
+        "plane_groups": {
+          "mean_kappa_out_of_plane": 0.258,
+          "mean_kappa_in_plane": 0.7221,
+          "out_of_plane_below_in_plane": true
+        }
+      },
+      {
+        "threshold_deg": 25,
+        "estimable": true,
+        "prevalence": {
+          "1": 0.00142,
+          "2": 0.00216
+        },
+        "auc": {
+          "cam1": 0.7734,
+          "cam2": 0.6149,
+          "best_cam": 1,
+          "best": 0.7734
+        },
+        "xview_kappa": 0.0273,
+        "plane_groups": {
+          "mean_kappa_out_of_plane": 0.2614,
+          "mean_kappa_in_plane": 0.7221,
+          "out_of_plane_below_in_plane": true
+        }
+      },
+      {
+        "threshold_deg": 30,
+        "estimable": false,
+        "prevalence": {
+          "1": 0.00112,
+          "2": 0.00183
+        },
+        "auc": {
+          "cam1": 0.7397,
+          "cam2": 0.6311,
+          "best_cam": 1,
+          "best": 0.7397
+        },
+        "xview_kappa": 0.0403,
+        "plane_groups": {
+          "mean_kappa_out_of_plane": 0.2657,
+          "mean_kappa_in_plane": 0.7221,
+          "out_of_plane_below_in_plane": true
+        }
+      }
+    ],
+    "arm_abd": [
+      {
+        "threshold_deg": 5,
+        "estimable": true,
+        "prevalence": {
+          "1": 0.87077,
+          "2": 0.87672
+        },
+        "auc": {
+          "cam1": 0.861,
+          "cam2": 0.8341,
+          "best_cam": 1,
+          "best": 0.861
+        },
+        "xview_kappa": 0.499,
+        "plane_groups": {
+          "mean_kappa_out_of_plane": 0.3144,
+          "mean_kappa_in_plane": 0.7221,
+          "out_of_plane_below_in_plane": true
+        }
+      },
+      {
+        "threshold_deg": 10,
+        "estimable": true,
+        "prevalence": {
+          "1": 0.6323,
+          "2": 0.63811
+        },
+        "auc": {
+          "cam1": 0.8297,
+          "cam2": 0.8315,
+          "best_cam": 2,
+          "best": 0.8315
+        },
+        "xview_kappa": 0.5581,
+        "plane_groups": {
+          "mean_kappa_out_of_plane": 0.3341,
+          "mean_kappa_in_plane": 0.7221,
+          "out_of_plane_below_in_plane": true
+        }
+      },
+      {
+        "threshold_deg": 15,
+        "estimable": true,
+        "prevalence": {
+          "1": 0.36883,
+          "2": 0.38275
+        },
+        "auc": {
+          "cam1": 0.806,
+          "cam2": 0.801,
+          "best_cam": 1,
+          "best": 0.806
+        },
+        "xview_kappa": 0.53,
+        "plane_groups": {
+          "mean_kappa_out_of_plane": 0.3247,
+          "mean_kappa_in_plane": 0.7221,
+          "out_of_plane_below_in_plane": true
+        }
+      },
+      {
+        "threshold_deg": 20,
+        "estimable": true,
+        "prevalence": {
+          "1": 0.19575,
+          "2": 0.2094
+        },
+        "auc": {
+          "cam1": 0.8176,
+          "cam2": 0.8035,
+          "best_cam": 1,
+          "best": 0.8176
+        },
+        "xview_kappa": 0.5127,
+        "plane_groups": {
+          "mean_kappa_out_of_plane": 0.319,
+          "mean_kappa_in_plane": 0.7221,
+          "out_of_plane_below_in_plane": true
+        }
+      },
+      {
+        "threshold_deg": 25,
+        "estimable": true,
+        "prevalence": {
+          "1": 0.10334,
+          "2": 0.11601
+        },
+        "auc": {
+          "cam1": 0.8536,
+          "cam2": 0.8353,
+          "best_cam": 1,
+          "best": 0.8536
+        },
+        "xview_kappa": 0.4767,
+        "plane_groups": {
+          "mean_kappa_out_of_plane": 0.307,
+          "mean_kappa_in_plane": 0.7221,
+          "out_of_plane_below_in_plane": true
+        }
+      },
+      {
+        "threshold_deg": 30,
+        "estimable": true,
+        "prevalence": {
+          "1": 0.05969,
+          "2": 0.06826
+        },
+        "auc": {
+          "cam1": 0.9047,
+          "cam2": 0.8613,
+          "best_cam": 1,
+          "best": 0.9047
+        },
+        "xview_kappa": 0.464,
+        "plane_groups": {
+          "mean_kappa_out_of_plane": 0.3027,
+          "mean_kappa_in_plane": 0.7221,
+          "out_of_plane_below_in_plane": true
+        }
+      }
+    ]
+  },
+  "summary": {
+    "trunk_twist": {
+      "n_estimable": 5,
+      "estimable_range_deg": [
+        5,
+        25
+      ],
+      "auc_min": 0.5065,
+      "auc_max": 0.7408,
+      "n_auc_at_least_usable": 2,
+      "kappa_min": -0.0028,
+      "kappa_max": 0.3569,
+      "plane_groups_hold_everywhere": true
+    },
+    "trunk_lateral": {
+      "n_estimable": 5,
+      "estimable_range_deg": [
+        5,
+        25
+      ],
+      "auc_min": 0.5759,
+      "auc_max": 0.8609,
+      "n_auc_at_least_usable": 4,
+      "kappa_min": 0.0172,
+      "kappa_max": 0.4625,
+      "plane_groups_hold_everywhere": true
+    },
+    "arm_abd": {
+      "n_estimable": 6,
+      "estimable_range_deg": [
+        5,
+        30
+      ],
+      "auc_min": 0.806,
+      "auc_max": 0.9047,
+      "n_auc_at_least_usable": 6,
+      "kappa_min": 0.464,
+      "kappa_max": 0.5581,
+      "plane_groups_hold_everywhere": true
+    }
+  }
+}

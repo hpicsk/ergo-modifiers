@@ -1,0 +1,167 @@
+{
+  "config": {
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "n_folds": 5,
+    "n_frames": 108000,
+    "n_subjects": 35,
+    "adjustment_modifiers": [
+      "trunk_twist",
+      "trunk_bending",
+      "neck_bending",
+      "upperarm_abduction",
+      "upperarm_across",
+      "lowerarm_outbody",
+      "wrist_bending",
+      "upperarm_supported"
+    ],
+    "decision_threshold": 0.5,
+    "predictor": "keypoint LightGBM OOF, base held at GT"
+  },
+  "gt_adjustment": {
+    "gt_total_mean": 2.3202,
+    "gt_total_min": -1,
+    "gt_total_max": 6,
+    "contact_prevalence": 0.0229
+  },
+  "agreement": {
+    "km_total": {
+      "mean": 0.4473,
+      "std": 0.0014,
+      "per_seed": [
+        0.4458,
+        0.4461,
+        0.4482,
+        0.4471,
+        0.4493
+      ]
+    },
+    "exact_total": {
+      "mean": 0.4125,
+      "std": 0.0017,
+      "per_seed": [
+        0.4124,
+        0.4135,
+        0.4097,
+        0.4136,
+        0.4135
+      ]
+    },
+    "mae_total": {
+      "mean": 0.7638,
+      "std": 0.0017,
+      "per_seed": [
+        0.7625,
+        0.7639,
+        0.7667,
+        0.7625,
+        0.7635
+      ]
+    },
+    "km_orient": {
+      "mean": 0.4557,
+      "std": 0.0015,
+      "per_seed": [
+        0.4543,
+        0.4545,
+        0.4562,
+        0.4555,
+        0.458
+      ]
+    },
+    "km_contact": {
+      "mean": -0.0036,
+      "std": 0.0033,
+      "per_seed": [
+        -0.0067,
+        -0.0013,
+        -0.0048,
+        0.0009,
+        -0.0061
+      ]
+    },
+    "mae_orient": {
+      "mean": 0.75,
+      "std": 0.0021,
+      "per_seed": [
+        0.7484,
+        0.75,
+        0.7535,
+        0.7489,
+        0.7492
+      ]
+    },
+    "mae_contact": {
+      "mean": 0.0299,
+      "std": 0.0009,
+      "per_seed": [
+        0.0309,
+        0.0291,
+        0.029,
+        0.0296,
+        0.0309
+      ]
+    },
+    "contact_share_of_disagree": {
+      "mean": 0.04,
+      "std": 0.0012,
+      "per_seed": [
+        0.0412,
+        0.0392,
+        0.0386,
+        0.0396,
+        0.0414
+      ]
+    }
+  },
+  "threshold_sensitivity": {
+    "grid": [
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7
+    ],
+    "committed": 0.5,
+    "per_threshold": {
+      "0.30": {
+        "km_orient": 0.3486,
+        "km_total": 0.3403,
+        "mae_total": 1.0098,
+        "exact_total": 0.3229
+      },
+      "0.40": {
+        "km_orient": 0.4222,
+        "km_total": 0.4122,
+        "mae_total": 0.8461,
+        "exact_total": 0.3835
+      },
+      "0.50": {
+        "km_orient": 0.4557,
+        "km_total": 0.4473,
+        "mae_total": 0.7638,
+        "exact_total": 0.4125
+      },
+      "0.60": {
+        "km_orient": 0.436,
+        "km_total": 0.4304,
+        "mae_total": 0.7765,
+        "exact_total": 0.4022
+      },
+      "0.70": {
+        "km_orient": 0.3458,
+        "km_total": 0.3444,
+        "mae_total": 0.9211,
+        "exact_total": 0.3421
+      }
+    },
+    "best_threshold_for_km_orient": 0.5,
+    "committed_is_best": true,
+    "max_km_orient_over_grid": 0.4557
+  }
+}

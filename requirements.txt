@@ -1,0 +1,22 @@
+# Dependencies for the ergo analysis pipeline (Python 3.12).
+# Pinned to the versions that produced the committed results.
+
+# --- Core: everything run_full_pipeline.py runs from the committed parquets ---
+numpy==2.5.1
+pandas==3.0.3
+scipy==1.18.0
+scikit-learn==1.9.0
+lightgbm==4.6.0
+matplotlib==3.11.0
+
+# --- Only to RE-RUN the image head, the pose-estimation preprocessing, or the
+#     external-corpus pose pass (AnDy). The committed
+#     results/image_vs_keypoint.json, data/est_pose.parquet and
+#     results/andy_score.json let run_full_pipeline.py skip these, so the core
+#     set above suffices for reproduction.
+#     av (PyAV) decodes the AnDy .mp4 archives in src/andy/sync.py.
+torch==2.13.0
+torchvision==0.28.0
+timm==1.0.27
+pillow==12.3.0
+av==18.0.0

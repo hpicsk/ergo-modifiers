@@ -1,0 +1,780 @@
+{
+  "config": {
+    "min_paired_frames": 50,
+    "n_boot": 2000,
+    "boot_seed": 0,
+    "lag_frames": [
+      1,
+      10,
+      100,
+      1000
+    ]
+  },
+  "structure": {
+    "n_sessions_total": 132,
+    "n_timestamps_unique": 132,
+    "n_multiangle_sessions": 8,
+    "n_session_pairs": 8,
+    "n_paired_frames": 2908,
+    "n_workers": 3,
+    "n_factories": 1,
+    "workers": [
+      "01_001",
+      "01_002",
+      "01_005"
+    ],
+    "factories": [
+      "01"
+    ],
+    "angle_pairs": {
+      "A1-A2": 820,
+      "A1-A3": 2037,
+      "A2-A3": 51
+    },
+    "frame_range_by_pair": [
+      {
+        "session": "01_001_001_2022-08-23-10-12-00",
+        "a": "1",
+        "b": "2",
+        "n_shared": 251
+      },
+      {
+        "session": "01_001_001_2022-08-23-10-22-00",
+        "a": "1",
+        "b": "3",
+        "n_shared": 654
+      },
+      {
+        "session": "01_002_001_2022-08-23-10-29-00",
+        "a": "1",
+        "b": "2",
+        "n_shared": 183
+      },
+      {
+        "session": "01_003_001_2022-08-23-10-39-00",
+        "a": "2",
+        "b": "3",
+        "n_shared": 51
+      },
+      {
+        "session": "01_004_001_2022-08-23-10-43-00",
+        "a": "1",
+        "b": "2",
+        "n_shared": 163
+      },
+      {
+        "session": "01_005_002_2022-08-23-10-49-00",
+        "a": "1",
+        "b": "3",
+        "n_shared": 556
+      },
+      {
+        "session": "01_007_005_2022-08-23-13-24-00",
+        "a": "1",
+        "b": "2",
+        "n_shared": 223
+      },
+      {
+        "session": "01_007_005_2022-08-23-13-41-00",
+        "a": "1",
+        "b": "3",
+        "n_shared": 827
+      }
+    ]
+  },
+  "per_modifier": {
+    "trunk_twist": {
+      "kappa": -0.1261343530321719,
+      "agreement": 0.49105914718019256,
+      "prev_a": 0.24587345254470427,
+      "prev_b": 0.40543328748280605,
+      "prev_gap": 0.15955983493810177,
+      "kappa_ci95": [
+        -0.20657183462419407,
+        -0.06739928259749026
+      ],
+      "family": "orientation"
+    },
+    "trunk_bending": {
+      "kappa": 0.3032744030377075,
+      "agreement": 0.6640302613480055,
+      "prev_a": 0.42090784044016505,
+      "prev_b": 0.3875515818431912,
+      "prev_gap": 0.03335625859697383,
+      "kappa_ci95": [
+        0.1790050779335116,
+        0.40887209711902117
+      ],
+      "family": "orientation"
+    },
+    "neck_bending": {
+      "kappa": 0.12047751959412156,
+      "agreement": 0.5605226960110041,
+      "prev_a": 0.49277854195323245,
+      "prev_b": 0.4776478679504814,
+      "prev_gap": 0.015130674002751032,
+      "kappa_ci95": [
+        0.0006898421364897109,
+        0.21109040826994396
+      ],
+      "family": "orientation"
+    },
+    "upperarm_abduction": {
+      "kappa": 0.23727104885268002,
+      "agreement": 0.938445667125172,
+      "prev_a": 0.04126547455295736,
+      "prev_b": 0.04298486932599725,
+      "prev_gap": 0.001719394773039895,
+      "kappa_ci95": [
+        0.03310959849970675,
+        0.435671540879761
+      ],
+      "family": "orientation"
+    },
+    "upperarm_across": {
+      "kappa": 0.07618536314057511,
+      "agreement": 0.8868638239339752,
+      "prev_a": 0.06946354883081156,
+      "prev_b": 0.06155433287482806,
+      "prev_gap": 0.007909215955983498,
+      "kappa_ci95": [
+        0.003377432543042792,
+        0.1055228016946983
+      ],
+      "family": "orientation"
+    },
+    "lowerarm_outbody": {
+      "kappa": 0.1583653860152281,
+      "agreement": 0.6581843191196699,
+      "prev_a": 0.71767537826685,
+      "prev_b": 0.7156121045392022,
+      "prev_gap": 0.0020632737276478075,
+      "kappa_ci95": [
+        -0.011264490466760863,
+        0.30484256839235124
+      ],
+      "family": "orientation"
+    },
+    "wrist_bending": {
+      "kappa": 0.047437117805500195,
+      "agreement": 0.8610729023383769,
+      "prev_a": 0.08837689133425035,
+      "prev_b": 0.06980742778541953,
+      "prev_gap": 0.018569463548830822,
+      "kappa_ci95": [
+        0.006429256617997532,
+        0.09157886029971951
+      ],
+      "family": "orientation"
+    },
+    "wrist_twisted": {
+      "kappa": 0.07652050200701188,
+      "agreement": 0.8022696011004127,
+      "prev_a": 0.8404401650618982,
+      "prev_b": 0.9198762035763411,
+      "prev_gap": 0.07943603851444292,
+      "kappa_ci95": [
+        0.001789104453621077,
+        0.17852035196405663
+      ],
+      "family": "orientation"
+    },
+    "wrist_twisted_end": {
+      "kappa": 0.028460585248118897,
+      "agreement": 0.8865199449793673,
+      "prev_a": 0.06808803301237965,
+      "prev_b": 0.05639614855570839,
+      "prev_gap": 0.011691884456671256,
+      "kappa_ci95": [
+        -0.01567886671259106,
+        0.052107586930290925
+      ],
+      "family": "orientation"
+    },
+    "legs_supported": {
+      "kappa": 0.8564444742439861,
+      "agreement": 0.953920220082531,
+      "prev_a": 0.2011691884456671,
+      "prev_b": 0.20048143053645118,
+      "prev_gap": 0.0006877579092159358,
+      "kappa_ci95": [
+        0.6231457588411483,
+        0.9489919675428489
+      ],
+      "family": "contact (partial)"
+    },
+    "trunk_supported": {
+      "kappa": -0.0008259911894272776,
+      "agreement": 0.9982806052269602,
+      "prev_a": 0.0010316368638239339,
+      "prev_b": 0.000687757909215956,
+      "prev_gap": 0.0003438789546079779,
+      "kappa_ci95": [
+        -0.0011001584277843923,
+        0.0
+      ],
+      "family": "contact (pure)"
+    },
+    "upperarm_supported": {
+      "kappa": 0.11217725052337768,
+      "agreement": 0.9662998624484181,
+      "prev_a": 0.02888583218707015,
+      "prev_b": 0.009628610729023384,
+      "prev_gap": 0.019257221458046765,
+      "kappa_ci95": [
+        -0.009450707072257059,
+        0.1529180205645132
+      ],
+      "family": "contact (pure)"
+    }
+  },
+  "per_session_pair": [
+    {
+      "session": "01_001_001_2022-08-23-10-12-00",
+      "worker": "01_001",
+      "n": 251,
+      "kappa": {
+        "trunk_twist": -0.1452013127351317,
+        "trunk_bending": -0.10130917133378525,
+        "neck_bending": 0.003756467503012284,
+        "upperarm_abduction": 0.3303419839922387,
+        "upperarm_across": 0.02758406942507352,
+        "lowerarm_outbody": 0.3455335586673105,
+        "wrist_bending": -0.02448979591836742,
+        "wrist_twisted": 0.19692993493187616,
+        "wrist_twisted_end": 0.01099605974525808,
+        "legs_supported": 0.9118989118989119,
+        "trunk_supported": null,
+        "upperarm_supported": -0.006415396952686336
+      }
+    },
+    {
+      "session": "01_001_001_2022-08-23-10-22-00",
+      "worker": "01_001",
+      "n": 654,
+      "kappa": {
+        "trunk_twist": -0.15541170817197614,
+        "trunk_bending": 0.3516061132973368,
+        "neck_bending": 0.11567747298420616,
+        "upperarm_abduction": 0.44976388210389184,
+        "upperarm_across": 0.07653407473893914,
+        "lowerarm_outbody": 0.06426696501570639,
+        "wrist_bending": 0.05025887106957949,
+        "wrist_twisted": 0.002075903550327274,
+        "wrist_twisted_end": 0.04279460145584546,
+        "legs_supported": 0.9414466130884042,
+        "trunk_supported": 0.0,
+        "upperarm_supported": -0.008540925266903976
+      }
+    },
+    {
+      "session": "01_002_001_2022-08-23-10-29-00",
+      "worker": "01_001",
+      "n": 183,
+      "kappa": {
+        "trunk_twist": -0.06176305446378416,
+        "trunk_bending": 0.2715273412947832,
+        "neck_bending": 0.21580764194738722,
+        "upperarm_abduction": -0.008264462809917328,
+        "upperarm_across": -0.009809932556713585,
+        "lowerarm_outbody": -0.1812855980471928,
+        "wrist_bending": -0.01003512293025599,
+        "wrist_twisted": -0.014361300075585781,
+        "wrist_twisted_end": -0.00965517241379299,
+        "legs_supported": 0.0,
+        "trunk_supported": null,
+        "upperarm_supported": 0.0
+      }
+    },
+    {
+      "session": "01_003_001_2022-08-23-10-39-00",
+      "worker": "01_001",
+      "n": 51,
+      "kappa": {
+        "trunk_twist": -0.09214795587280977,
+        "trunk_bending": 0.5667953667953668,
+        "neck_bending": 0.5391566265060241,
+        "upperarm_abduction": null,
+        "upperarm_across": -0.07293127629733509,
+        "lowerarm_outbody": 0.15000000000000002,
+        "wrist_bending": 0.6348448687350835,
+        "wrist_twisted": 0.04753820033955869,
+        "wrist_twisted_end": 0.0,
+        "legs_supported": null,
+        "trunk_supported": null,
+        "upperarm_supported": null
+      }
+    },
+    {
+      "session": "01_004_001_2022-08-23-10-43-00",
+      "worker": "01_001",
+      "n": 163,
+      "kappa": {
+        "trunk_twist": 0.011287515164301931,
+        "trunk_bending": 0.25073129962390306,
+        "neck_bending": 0.08202166064981942,
+        "upperarm_abduction": -0.050765511684125686,
+        "upperarm_across": 0.0,
+        "lowerarm_outbody": 0.2635542168674698,
+        "wrist_bending": -0.032239493379389694,
+        "wrist_twisted": 0.11485930557841051,
+        "wrist_twisted_end": -0.01494396014943944,
+        "legs_supported": 0.11466505733252863,
+        "trunk_supported": null,
+        "upperarm_supported": 0.0
+      }
+    },
+    {
+      "session": "01_005_002_2022-08-23-10-49-00",
+      "worker": "01_002",
+      "n": 556,
+      "kappa": {
+        "trunk_twist": -0.12143714580832476,
+        "trunk_bending": 0.07601306944079322,
+        "neck_bending": -0.07616814786543791,
+        "upperarm_abduction": -0.06397806466354394,
+        "upperarm_across": 0.13957019387993452,
+        "lowerarm_outbody": 0.014665866625734436,
+        "wrist_bending": 0.010762020482555146,
+        "wrist_twisted": -0.027415669936836418,
+        "wrist_twisted_end": 0.03190294315884068,
+        "legs_supported": null,
+        "trunk_supported": 0.0,
+        "upperarm_supported": -0.006204756980351611
+      }
+    },
+    {
+      "session": "01_007_005_2022-08-23-13-24-00",
+      "worker": "01_005",
+      "n": 223,
+      "kappa": {
+        "trunk_twist": -0.3002915451895043,
+        "trunk_bending": 0.3994897718146171,
+        "neck_bending": 0.23017174419608188,
+        "upperarm_abduction": 0.5915750915750916,
+        "upperarm_across": -0.04734172459139585,
+        "lowerarm_outbody": 0.18642249087917584,
+        "wrist_bending": -0.016408386508660167,
+        "wrist_twisted": 0.08581579666575567,
+        "wrist_twisted_end": -0.0703999999999998,
+        "legs_supported": null,
+        "trunk_supported": 0.0,
+        "upperarm_supported": -0.010879419764279197
+      }
+    },
+    {
+      "session": "01_007_005_2022-08-23-13-41-00",
+      "worker": "01_005",
+      "n": 827,
+      "kappa": {
+        "trunk_twist": 0.0012634004050313674,
+        "trunk_bending": 0.1895482339827984,
+        "neck_bending": 0.033068392521819145,
+        "upperarm_abduction": 0.26071604165735485,
+        "upperarm_across": 0.06988659439532618,
+        "lowerarm_outbody": 0.28005436246234394,
+        "wrist_bending": 0.024684438528275066,
+        "wrist_twisted": 0.09991292990857648,
+        "wrist_twisted_end": 0.019630087570585486,
+        "legs_supported": 0.8051218762106743,
+        "trunk_supported": 0.0,
+        "upperarm_supported": 0.16738314023172185
+      }
+    }
+  ],
+  "temporal_control": {
+    "trunk_twist": {
+      "1": 0.7625130344108446,
+      "10": 0.6284080329831094,
+      "100": 0.573481384715872,
+      "1000": 0.584055459272097
+    },
+    "trunk_bending": {
+      "1": 0.8399374348279458,
+      "10": 0.6423726559382896,
+      "100": 0.5757674722403657,
+      "1000": 0.6464471403812825
+    },
+    "neck_bending": {
+      "1": 0.7553441084462982,
+      "10": 0.603404708072882,
+      "100": 0.556662312214239,
+      "1000": 0.5823223570190641
+    },
+    "upperarm_abduction": {
+      "1": 0.956725755995829,
+      "10": 0.9144833089506583,
+      "100": 0.9110058785107773,
+      "1000": 0.9237435008665511
+    },
+    "upperarm_across": {
+      "1": 0.9337851929092805,
+      "10": 0.8841601276765527,
+      "100": 0.8628347485303723,
+      "1000": 0.8752166377816292
+    },
+    "lowerarm_outbody": {
+      "1": 0.8283368091762252,
+      "10": 0.6886554063040298,
+      "100": 0.6516982364467668,
+      "1000": 0.7469670710571924
+    },
+    "wrist_bending": {
+      "1": 0.8889468196037539,
+      "10": 0.857161856629871,
+      "100": 0.8527106466361855,
+      "1000": 0.9185441941074524
+    },
+    "wrist_twisted": {
+      "1": 0.9039363920750783,
+      "10": 0.8501130469477324,
+      "100": 0.8218484650555192,
+      "1000": 0.878682842287695
+    },
+    "wrist_twisted_end": {
+      "1": 0.9048488008342023,
+      "10": 0.8820321851310015,
+      "100": 0.8757348138471587,
+      "1000": 0.9272097053726169
+    },
+    "legs_supported": {
+      "1": 0.9595933263816475,
+      "10": 0.9253890144966086,
+      "100": 0.7292619203135206,
+      "1000": 0.7001733102253033
+    },
+    "trunk_supported": {
+      "1": 0.9958289885297185,
+      "10": 0.9920202154541827,
+      "100": 0.980731548007838,
+      "1000": 0.9948006932409013
+    },
+    "upperarm_supported": {
+      "1": 0.9632429614181439,
+      "10": 0.9551802101343264,
+      "100": 0.9286414108425866,
+      "1000": 0.9220103986135182
+    }
+  },
+  "temporal_control_base": {
+    "1": {
+      "n_views": 17,
+      "n_views_total": 17,
+      "n_pairs": 7672
+    },
+    "10": {
+      "n_views": 17,
+      "n_views_total": 17,
+      "n_pairs": 7519
+    },
+    "100": {
+      "n_views": 14,
+      "n_views_total": 17,
+      "n_pairs": 6124
+    },
+    "1000": {
+      "n_views": 2,
+      "n_views_total": 17,
+      "n_pairs": 577
+    }
+  },
+  "tier3_near_simultaneous": {
+    "per_modifier": {
+      "trunk_twist": {
+        "family": "orientation",
+        "gap": 0.16298172862139798,
+        "null_gap": 0.15787746279317091,
+        "ratio": 1.0323305539493877,
+        "ratio_ci95": [
+          0.5801419269941318,
+          1.4306461753636563
+        ],
+        "reproduces": false
+      },
+      "trunk_bending": {
+        "family": "orientation",
+        "gap": 0.08877129466529908,
+        "null_gap": 0.2733372897684371,
+        "ratio": 0.3247683283188451,
+        "ratio_ci95": [
+          0.20900808733238999,
+          0.4982315405245856
+        ],
+        "reproduces": true
+      },
+      "neck_bending": {
+        "family": "orientation",
+        "gap": 0.12033033715060631,
+        "null_gap": 0.19225264210548257,
+        "ratio": 0.6258969230944826,
+        "ratio_ci95": [
+          0.42981592928947526,
+          0.8508608522728611
+        ],
+        "reproduces": true
+      },
+      "upperarm_abduction": {
+        "family": "orientation",
+        "gap": 0.015803458132493342,
+        "null_gap": 0.02816509237939007,
+        "ratio": 0.5611008804664028,
+        "ratio_ci95": [
+          0.3111403167782562,
+          0.9113171130968135
+        ],
+        "reproduces": true
+      },
+      "upperarm_across": {
+        "family": "orientation",
+        "gap": 0.06492197129825038,
+        "null_gap": 0.12810487383594352,
+        "ratio": 0.5067876760207592,
+        "ratio_ci95": [
+          0.3311087397723105,
+          1.1937494575941998
+        ],
+        "reproduces": false
+      },
+      "lowerarm_outbody": {
+        "family": "orientation",
+        "gap": 0.11410078218777603,
+        "null_gap": 0.14468095783742185,
+        "ratio": 0.7886371772295785,
+        "ratio_ci95": [
+          0.43183908373300817,
+          1.0046931298907917
+        ],
+        "reproduces": false
+      },
+      "wrist_bending": {
+        "family": "orientation",
+        "gap": 0.023921219809516257,
+        "null_gap": 0.06648519411178441,
+        "ratio": 0.35979769825589264,
+        "ratio_ci95": [
+          0.2659621668086711,
+          0.5148712434242614
+        ],
+        "reproduces": true
+      },
+      "wrist_twisted": {
+        "family": "orientation",
+        "gap": 0.05066170214251481,
+        "null_gap": 0.07368716087223098,
+        "ratio": 0.6875241431863428,
+        "ratio_ci95": [
+          0.30892212330383095,
+          1.3349674825907567
+        ],
+        "reproduces": false
+      },
+      "wrist_twisted_end": {
+        "family": "orientation",
+        "gap": 0.023510659419477012,
+        "null_gap": 0.053108960038071105,
+        "ratio": 0.44268724905596757,
+        "ratio_ci95": [
+          0.2921056144471212,
+          0.6147391684867487
+        ],
+        "reproduces": true
+      },
+      "legs_supported": {
+        "family": "contact (partial)",
+        "gap": 0.008656756311453871,
+        "null_gap": 0.03387461266467692,
+        "ratio": 0.25555292387094325,
+        "ratio_ci95": [
+          0.06817355413384035,
+          0.4763541506607228
+        ],
+        "reproduces": true
+      },
+      "trunk_supported": {
+        "family": "contact (pure)",
+        "gap": 0.0009786436666016922,
+        "null_gap": 0.001148105625717566,
+        "ratio": 0.8523986336100738,
+        "ratio_ci95": [
+          0.0,
+          2.0494117647058823
+        ],
+        "reproduces": false
+      },
+      "upperarm_supported": {
+        "family": "contact (pure)",
+        "gap": 0.008421335303456911,
+        "null_gap": 0.010359260939432735,
+        "ratio": 0.8129281956206865,
+        "ratio_ci95": [
+          0.3400435733432958,
+          1.1379015667582562
+        ],
+        "reproduces": false
+      }
+    },
+    "extremes": {
+      "widest_gap": "trunk_twist",
+      "narrowest_gap": "legs_supported"
+    },
+    "structure": {
+      "dt_s": 60,
+      "min_take_frames": 50,
+      "n_pairs": 78,
+      "n_workers": 23,
+      "n_factories": 5,
+      "n_null_pairs": 570,
+      "n_takes": 137,
+      "n_takes_rounded_stamp": 26,
+      "rounded_stamp_factories": [
+        [
+          "01",
+          25
+        ],
+        [
+          "05",
+          1
+        ]
+      ]
+    },
+    "sensitivity": {
+      "0": {
+        "trunk_twist": 1.4609812242293372,
+        "trunk_bending": 0.2616647570808551,
+        "neck_bending": 0.5882008211593835,
+        "upperarm_abduction": 0.2487400249993284,
+        "upperarm_across": 0.28426403507974907,
+        "lowerarm_outbody": 0.6288131125536462,
+        "wrist_bending": 0.5277572584341013,
+        "wrist_twisted": 2.1661136361799906,
+        "wrist_twisted_end": 0.5185938892468374,
+        "legs_supported": 0.2316521840758434,
+        "trunk_supported": 0.6432791728212703,
+        "upperarm_supported": 1.0302415620559366
+      },
+      "30": {
+        "trunk_twist": 1.0292316723111585,
+        "trunk_bending": 0.41371145741618764,
+        "neck_bending": 0.7480478128171598,
+        "upperarm_abduction": 0.5744253985424469,
+        "upperarm_across": 0.8735923080727314,
+        "lowerarm_outbody": 0.6766679729503492,
+        "wrist_bending": 0.4160200368239812,
+        "wrist_twisted": 0.7547296867430052,
+        "wrist_twisted_end": 0.4788703782211203,
+        "legs_supported": 0.18162346919396893,
+        "trunk_supported": 0.5354281743085294,
+        "upperarm_supported": 0.7444994466936147
+      },
+      "60": {
+        "trunk_twist": 1.0323305539493877,
+        "trunk_bending": 0.3247683283188451,
+        "neck_bending": 0.6258969230944826,
+        "upperarm_abduction": 0.5611008804664028,
+        "upperarm_across": 0.5067876760207592,
+        "lowerarm_outbody": 0.7886371772295785,
+        "wrist_bending": 0.35979769825589264,
+        "wrist_twisted": 0.6875241431863428,
+        "wrist_twisted_end": 0.44268724905596757,
+        "legs_supported": 0.25555292387094325,
+        "trunk_supported": 0.8523986336100738,
+        "upperarm_supported": 0.8129281956206865
+      },
+      "120": {
+        "trunk_twist": 1.0427230599337116,
+        "trunk_bending": 0.34533885400160097,
+        "neck_bending": 0.6746736522696309,
+        "upperarm_abduction": 0.4045401930970849,
+        "upperarm_across": 0.5154974504219669,
+        "lowerarm_outbody": 0.7300092467734715,
+        "wrist_bending": 0.3808267901440272,
+        "wrist_twisted": 0.6958384908803483,
+        "wrist_twisted_end": 0.4479988021727363,
+        "legs_supported": 0.19679049574041743,
+        "trunk_supported": 0.7665134121230925,
+        "upperarm_supported": 0.7365264930075152
+      },
+      "300": {
+        "trunk_twist": 1.0427230599337116,
+        "trunk_bending": 0.36746449712175205,
+        "neck_bending": 0.6933418260124858,
+        "upperarm_abduction": 0.4045401930970849,
+        "upperarm_across": 0.43785346992474367,
+        "lowerarm_outbody": 0.7166059209050538,
+        "wrist_bending": 0.39192802262363313,
+        "wrist_twisted": 0.6958384908803483,
+        "wrist_twisted_end": 0.47369093061450596,
+        "legs_supported": 0.20359057068508937,
+        "trunk_supported": 0.8057763470489009,
+        "upperarm_supported": 0.7830096438226221
+      }
+    },
+    "sensitivity_structure": {
+      "0": {
+        "n_pairs": 8,
+        "n_workers": 3,
+        "n_factories": 1
+      },
+      "30": {
+        "n_pairs": 36,
+        "n_workers": 19,
+        "n_factories": 5
+      },
+      "60": {
+        "n_pairs": 78,
+        "n_workers": 23,
+        "n_factories": 5
+      },
+      "120": {
+        "n_pairs": 93,
+        "n_workers": 26,
+        "n_factories": 5
+      },
+      "300": {
+        "n_pairs": 103,
+        "n_workers": 27,
+        "n_factories": 5
+      }
+    }
+  },
+  "sensitivity": {
+    "20": {
+      "n_pairs": 10,
+      "n_frames": 2999,
+      "kappa_trunk_twist": -0.12204938663522369,
+      "kappa_legs_supported": 0.8575308023974004
+    },
+    "50": {
+      "n_pairs": 8,
+      "n_frames": 2908,
+      "kappa_trunk_twist": -0.1261343530321719,
+      "kappa_legs_supported": 0.8564444742439861
+    },
+    "100": {
+      "n_pairs": 7,
+      "n_frames": 2857,
+      "kappa_trunk_twist": -0.12474102747781779,
+      "kappa_legs_supported": 0.8557976184108728
+    },
+    "200": {
+      "n_pairs": 5,
+      "n_frames": 2511,
+      "kappa_trunk_twist": -0.12179336709030553,
+      "kappa_legs_supported": 0.8989252505736023
+    }
+  },
+  "headline": {
+    "max_orient_kappa": 0.3032744030377075,
+    "max_orient_kappa_modifier": "trunk_bending",
+    "legs_support_kappa": 0.8564444742439861,
+    "trunk_twist_kappa": -0.1261343530321719,
+    "trunk_twist_prev_gap": 0.15955983493810177,
+    "legs_support_prev_gap": 0.0006877579092159358,
+    "trunk_twist_xview_agreement": 0.49105914718019256,
+    "trunk_twist_within_view_floor": 0.573481384715872,
+    "trunk_twist_within_view_floor_lag": 100,
+    "trunk_twist_within_view_floor_views": 14,
+    "trunk_twist_within_view_floor_views_total": 17,
+    "trunk_twist_within_view_floor_pairs": 6124
+  }
+}
